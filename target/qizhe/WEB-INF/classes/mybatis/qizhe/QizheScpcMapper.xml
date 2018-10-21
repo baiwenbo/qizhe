@@ -1,0 +1,1056 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="QizheScpcMapper" >
+
+
+
+
+
+    <sql id="Base_Column_List" >
+        ID, qname, bumen, qgongsi, qbianhao, address, qnamehao, type, wc, bianli, newdate,
+        jinzhandate, category, jinzhan, lizhan, fname, qscore, beiyong1, beiyong2,fengongs,
+        shenggs,beiyong3,beiyong4,beiyong5,beiyong6,beiyong7,beiyong8,beiyong9,
+        a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, a11, a12, a13, a14, a15, a16, a17,
+        a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, b01, b02,
+        b03, b04, b05, b06, b07, b08, b09, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19,
+        b20, b21, b22, b23, b24, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12,
+        c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29,
+        c30, c31, d01, d02, d03, d04, d05, d06, d07, d08, d09, d10, d11, d12, d13, d14, d15,
+        d16, d17, d18, d19, d20, e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12,
+        e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, f01, f02,
+        f03, f04, f05, f06, f07, f08, f09, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19,
+        f20, f21, f22, f23, g01, g02, g03, g04, g05, g06, g07, g08, g09, g10, g11, g12, g13,
+        g14, g15, g16, g17, g18, g19, g20, h01, a01sm, a02sm, a03sm, a04sm, a05sm, a06sm,
+        a07sm, a08sm, a09sm, a10sm, a11sm, a12sm, a13sm, a14sm, a15sm, a16sm, a17sm, a18sm,
+        a19sm, a20sm, a21sm, a22sm, a23sm, a24sm, a25sm, a26sm, a27sm, a28sm, a29sm, a30sm,
+        a31sm, a32sm, b01sm, b02sm, b03sm, b04sm, b05sm, b06sm, b07sm, b08sm, b09sm, b10sm,
+        b11sm, b12sm, b13sm, b14sm, b15sm, b16sm, b17sm, b18sm, b19sm, b20sm, b21sm, b22sm,
+        b23sm, b24sm, c01sm, c02sm, c03sm, c04sm, c05sm, c06sm, c07sm, c08sm, c09sm, c10sm,
+        c11sm, c12sm, c13sm, c14sm, c15sm, c16sm, c17sm, c18sm, c19sm, c20sm, c21sm, c22sm,
+        c23sm, c24sm, c25sm, c26sm, c27sm, c28sm, c29sm, c30sm, c31sm, d01sm, d02sm, d03sm,
+        d04sm, d05sm, d06sm, d07sm, d08sm, d09sm, d10sm, d11sm, d12sm, d13sm, d14sm, d15sm,
+        d16sm, d17sm, d18sm, d19sm, d20sm, e01sm, e02sm, e03sm, e04sm, e05sm, e06sm, e07sm,
+        e08sm, e09sm, e10sm, e11sm, e12sm, e13sm, e14sm, e15sm, e16sm, e17sm, e18sm, e19sm,
+        e20sm, e21sm, e22sm, e23sm, e24sm, e25sm, e26sm, e27sm, f01sm, f02sm, f03sm, f04sm,
+        f05sm, f06sm, f07sm, f08sm, f09sm, f10sm, f11sm, f12sm, f13sm, f14sm, f15sm, f16sm,
+        f17sm, f18sm, f19sm, f20sm, f21sm, f22sm, f23sm, g01sm, g02sm, g03sm, g04sm, g05sm,
+        g06sm, g07sm, g08sm, g09sm, g10sm, g11sm, g12sm, g13sm, g14sm, g15sm, g16sm, g17sm,
+        g18sm, g19sm, g20sm, h01sm, i01, dateMonth,af,bf,cf,df,ef,ff,gf
+    </sql>
+
+    <sql id="Column_List" >
+         qname, bumen, qgongsi, qbianhao, address, qnamehao, type, wc, bianli, newdate,
+        jinzhandate, category, jinzhan, lizhan, fname, qscore, beiyong1, beiyong2,fengongs,
+        shenggs,beiyong3,beiyong4,beiyong5,beiyong6,beiyong7,beiyong8,beiyong9,
+        a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, a11, a12, a13, a14, a15, a16, a17,
+        a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, b01, b02,
+        b03, b04, b05, b06, b07, b08, b09, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19,
+        b20, b21, b22, b23, b24, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12,
+        c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29,
+        c30, c31, d01, d02, d03, d04, d05, d06, d07, d08, d09, d10, d11, d12, d13, d14, d15,
+        d16, d17, d18, d19, d20, e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12,
+        e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, f01, f02,
+        f03, f04, f05, f06, f07, f08, f09, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19,
+        f20, f21, f22, f23, g01, g02, g03, g04, g05, g06, g07, g08, g09, g10, g11, g12, g13,
+        g14, g15, g16, g17, g18, g19, g20, h01, a01sm, a02sm, a03sm, a04sm, a05sm, a06sm,
+        a07sm, a08sm, a09sm, a10sm, a11sm, a12sm, a13sm, a14sm, a15sm, a16sm, a17sm, a18sm,
+        a19sm, a20sm, a21sm, a22sm, a23sm, a24sm, a25sm, a26sm, a27sm, a28sm, a29sm, a30sm,
+        a31sm, a32sm, b01sm, b02sm, b03sm, b04sm, b05sm, b06sm, b07sm, b08sm, b09sm, b10sm,
+        b11sm, b12sm, b13sm, b14sm, b15sm, b16sm, b17sm, b18sm, b19sm, b20sm, b21sm, b22sm,
+        b23sm, b24sm, c01sm, c02sm, c03sm, c04sm, c05sm, c06sm, c07sm, c08sm, c09sm, c10sm,
+        c11sm, c12sm, c13sm, c14sm, c15sm, c16sm, c17sm, c18sm, c19sm, c20sm, c21sm, c22sm,
+        c23sm, c24sm, c25sm, c26sm, c27sm, c28sm, c29sm, c30sm, c31sm, d01sm, d02sm, d03sm,
+        d04sm, d05sm, d06sm, d07sm, d08sm, d09sm, d10sm, d11sm, d12sm, d13sm, d14sm, d15sm,
+        d16sm, d17sm, d18sm, d19sm, d20sm, e01sm, e02sm, e03sm, e04sm, e05sm, e06sm, e07sm,
+        e08sm, e09sm, e10sm, e11sm, e12sm, e13sm, e14sm, e15sm, e16sm, e17sm, e18sm, e19sm,
+        e20sm, e21sm, e22sm, e23sm, e24sm, e25sm, e26sm, e27sm, f01sm, f02sm, f03sm, f04sm,
+        f05sm, f06sm, f07sm, f08sm, f09sm, f10sm, f11sm, f12sm, f13sm, f14sm, f15sm, f16sm,
+        f17sm, f18sm, f19sm, f20sm, f21sm, f22sm, f23sm, g01sm, g02sm, g03sm, g04sm, g05sm,
+        g06sm, g07sm, g08sm, g09sm, g10sm, g11sm, g12sm, g13sm, g14sm, g15sm, g16sm, g17sm,
+        g18sm, g19sm, g20sm, h01sm, i01, dateMonth,af,bf,cf,df,ef,ff,gf
+    </sql>
+
+
+
+<select id="getMonthList" resultType="String">
+    select DATE_FORMAT(dateMonth,'%Y-%m') from qizhe_scpc GROUP BY  DATE_FORMAT(dateMonth,'%Y-%m')
+</select>
+
+  <insert id="insert" parameterType="pd" >
+    insert into qizhe_scpc (id, qname, bumen,
+      qgongsi, qbianhao, address,
+      qnamehao, type, wc,
+      bianli, newdate, jinzhandate,
+      category, jinzhan, lizhan,
+      fname, af,bf,cf,df,ef,ff,gf,
+      qscore, beiyong1,
+      beiyong2, fengongs,
+        shenggs,beiyong3,beiyong4,beiyong5,beiyong6,beiyong7,beiyong8,beiyong9,
+       a01,
+      a02, a03, a04, a05,
+      a06, a07, a08, a09,
+      a10, a11, a12, a13,
+      a14, a15, a16, a17,
+      a18, a19, a20, a21,
+      a22, a23, a24, a25,
+      a26, a27, a28, a29,
+      a30, a31, a32, b01,
+      b02, b03, b04, b05,
+      b06, b07, b08, b09,
+      b10, b11, b12, b13,
+      b14, b15, b16, b17,
+      b18, b19, b20, b21,
+      b22, b23, b24, c01,
+      c02, c03, c04, c05,
+      c06, c07, c08, c09,
+      c10, c11, c12, c13,
+      c14, c15, c16, c17,
+      c18, c19, c20, c21,
+      c22, c23, c24, c25,
+      c26, c27, c28, c29,
+      c30, c31, d01, d02,
+      d03, d04, d05, d06,
+      d07, d08, d09, d10,
+      d11, d12, d13, d14,
+      d15, d16, d17, d18,
+      d19, d20, e01, e02,
+      e03, e04, e05, e06,
+      e07, e08, e09, e10,
+      e11, e12, e13, e14,
+      e15, e16, e17, e18,
+      e19, e20, e21, e22,
+      e23, e24, e25, e26,
+      e27, f01, f02, f03,
+      f04, f05, f06, f07,
+      f08, f09, f10, f11,
+      f12, f13, f14, f15,
+      f16, f17, f18, f19,
+      f20, f21, f22, f23,
+      g01, g02, g03, g04,
+      g05, g06, g07, g08,
+      g09, g10, g11, g12,
+      g13, g14, g15, g16,
+      g17, g18, g19, g20,
+      h01, a01sm, a02sm,
+      a03sm, a04sm, a05sm,
+      a06sm, a07sm, a08sm,
+      a09sm, a10sm, a11sm,
+      a12sm, a13sm, a14sm,
+      a15sm, a16sm, a17sm,
+      a18sm, a19sm, a20sm,
+      a21sm, a22sm, a23sm,
+      a24sm, a25sm, a26sm,
+      a27sm, a28sm, a29sm,
+      a30sm, a31sm, a32sm,
+      b01sm, b02sm, b03sm,
+      b04sm, b05sm, b06sm,
+      b07sm, b08sm, b09sm,
+      b10sm, b11sm, b12sm,
+      b13sm, b14sm, b15sm,
+      b16sm, b17sm, b18sm,
+      b19sm, b20sm, b21sm,
+      b22sm, b23sm, b24sm,
+      c01sm, c02sm, c03sm,
+      c04sm, c05sm, c06sm,
+      c07sm, c08sm, c09sm,
+      c10sm, c11sm, c12sm,
+      c13sm, c14sm, c15sm,
+      c16sm, c17sm, c18sm,
+      c19sm, c20sm, c21sm,
+      c22sm, c23sm, c24sm,
+      c25sm, c26sm, c27sm,
+      c28sm, c29sm, c30sm,
+      c31sm, d01sm, d02sm,
+      d03sm, d04sm, d05sm,
+      d06sm, d07sm, d08sm,
+      d09sm, d10sm, d11sm,
+      d12sm, d13sm, d14sm,
+      d15sm, d16sm, d17sm,
+      d18sm, d19sm, d20sm,
+      e01sm, e02sm, e03sm,
+      e04sm, e05sm, e06sm,
+      e07sm, e08sm, e09sm,
+      e10sm, e11sm, e12sm,
+      e13sm, e14sm, e15sm,
+      e16sm, e17sm, e18sm,
+      e19sm, e20sm, e21sm,
+      e22sm, e23sm, e24sm,
+      e25sm, e26sm, e27sm,
+      f01sm, f02sm, f03sm,
+      f04sm, f05sm, f06sm,
+      f07sm, f08sm, f09sm,
+      f10sm, f11sm, f12sm,
+      f13sm, f14sm, f15sm,
+      f16sm, f17sm, f18sm,
+      f19sm, f20sm, f21sm,
+      f22sm, f23sm, g01sm,
+      g02sm, g03sm, g04sm,
+      g05sm, g06sm, g07sm,
+      g08sm, g09sm, g10sm,
+      g11sm, g12sm, g13sm,
+      g14sm, g15sm, g16sm,
+      g17sm, g18sm, g19sm,
+      g20sm, h01sm, i01)
+    values (#{id,jdbcType=INTEGER}, #{qname,jdbcType=VARCHAR}, #{bumen,jdbcType=VARCHAR},
+      #{qgongsi,jdbcType=VARCHAR}, #{qbianhao,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+      #{qnamehao,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{wc,jdbcType=VARCHAR},
+      #{bianli,jdbcType=VARCHAR}, now(), #{jinzhandate,jdbcType=VARCHAR},
+      #{category,jdbcType=VARCHAR}, #{jinzhan,jdbcType=VARCHAR}, #{lizhan,jdbcType=VARCHAR},
+      #{fname,jdbcType=VARCHAR},#{af,jdbcType=VARCHAR},#{bf,jdbcType=VARCHAR},
+      #{cf,jdbcType=VARCHAR},#{df,jdbcType=VARCHAR},#{ef,jdbcType=VARCHAR},
+      #{ff,jdbcType=VARCHAR},#{gf,jdbcType=VARCHAR},
+       #{qscore,jdbcType=VARCHAR}, #{beiyong1,jdbcType=VARCHAR},
+      #{beiyong2,jdbcType=VARCHAR},#{fengongs,jdbcType=VARCHAR},#{shenggs,jdbcType=VARCHAR},
+      #{beiyong3,jdbcType=VARCHAR},
+  #{beiyong4,jdbcType=VARCHAR},#{beiyong5,jdbcType=VARCHAR},#{beiyong6,jdbcType=VARCHAR},#{beiyong7,jdbcType=VARCHAR},
+  #{beiyong8,jdbcType=VARCHAR},#{beiyong9,jdbcType=VARCHAR},
+       #{a01,jdbcType=VARCHAR},
+      #{a02,jdbcType=VARCHAR}, #{a03,jdbcType=VARCHAR}, #{a04,jdbcType=VARCHAR}, #{a05,jdbcType=VARCHAR},
+      #{a06,jdbcType=VARCHAR}, #{a07,jdbcType=VARCHAR}, #{a08,jdbcType=VARCHAR}, #{a09,jdbcType=VARCHAR},
+      #{a10,jdbcType=VARCHAR}, #{a11,jdbcType=VARCHAR}, #{a12,jdbcType=VARCHAR}, #{a13,jdbcType=VARCHAR},
+      #{a14,jdbcType=VARCHAR}, #{a15,jdbcType=VARCHAR}, #{a16,jdbcType=VARCHAR}, #{a17,jdbcType=VARCHAR},
+      #{a18,jdbcType=VARCHAR}, #{a19,jdbcType=VARCHAR}, #{a20,jdbcType=VARCHAR}, #{a21,jdbcType=VARCHAR},
+      #{a22,jdbcType=VARCHAR}, #{a23,jdbcType=VARCHAR}, #{a24,jdbcType=VARCHAR}, #{a25,jdbcType=VARCHAR},
+      #{a26,jdbcType=VARCHAR}, #{a27,jdbcType=VARCHAR}, #{a28,jdbcType=VARCHAR}, #{a29,jdbcType=VARCHAR},
+      #{a30,jdbcType=VARCHAR}, #{a31,jdbcType=VARCHAR}, #{a32,jdbcType=VARCHAR}, #{b01,jdbcType=VARCHAR},
+      #{b02,jdbcType=VARCHAR}, #{b03,jdbcType=VARCHAR}, #{b04,jdbcType=VARCHAR}, #{b05,jdbcType=VARCHAR},
+      #{b06,jdbcType=VARCHAR}, #{b07,jdbcType=VARCHAR}, #{b08,jdbcType=VARCHAR}, #{b09,jdbcType=VARCHAR},
+      #{b10,jdbcType=VARCHAR}, #{b11,jdbcType=VARCHAR}, #{b12,jdbcType=VARCHAR}, #{b13,jdbcType=VARCHAR},
+      #{b14,jdbcType=VARCHAR}, #{b15,jdbcType=VARCHAR}, #{b16,jdbcType=VARCHAR}, #{b17,jdbcType=VARCHAR},
+      #{b18,jdbcType=VARCHAR}, #{b19,jdbcType=VARCHAR}, #{b20,jdbcType=VARCHAR}, #{b21,jdbcType=VARCHAR},
+      #{b22,jdbcType=VARCHAR}, #{b23,jdbcType=VARCHAR}, #{b24,jdbcType=VARCHAR}, #{c01,jdbcType=VARCHAR},
+      #{c02,jdbcType=VARCHAR}, #{c03,jdbcType=VARCHAR}, #{c04,jdbcType=VARCHAR}, #{c05,jdbcType=VARCHAR},
+      #{c06,jdbcType=VARCHAR}, #{c07,jdbcType=VARCHAR}, #{c08,jdbcType=VARCHAR}, #{c09,jdbcType=VARCHAR},
+      #{c10,jdbcType=VARCHAR}, #{c11,jdbcType=VARCHAR}, #{c12,jdbcType=VARCHAR}, #{c13,jdbcType=VARCHAR},
+      #{c14,jdbcType=VARCHAR}, #{c15,jdbcType=VARCHAR}, #{c16,jdbcType=VARCHAR}, #{c17,jdbcType=VARCHAR},
+      #{c18,jdbcType=VARCHAR}, #{c19,jdbcType=VARCHAR}, #{c20,jdbcType=VARCHAR}, #{c21,jdbcType=VARCHAR},
+      #{c22,jdbcType=VARCHAR}, #{c23,jdbcType=VARCHAR}, #{c24,jdbcType=VARCHAR}, #{c25,jdbcType=VARCHAR},
+      #{c26,jdbcType=VARCHAR}, #{c27,jdbcType=VARCHAR}, #{c28,jdbcType=VARCHAR}, #{c29,jdbcType=VARCHAR},
+      #{c30,jdbcType=VARCHAR}, #{c31,jdbcType=VARCHAR}, #{d01,jdbcType=VARCHAR}, #{d02,jdbcType=VARCHAR},
+      #{d03,jdbcType=VARCHAR}, #{d04,jdbcType=VARCHAR}, #{d05,jdbcType=VARCHAR}, #{d06,jdbcType=VARCHAR},
+      #{d07,jdbcType=VARCHAR}, #{d08,jdbcType=VARCHAR}, #{d09,jdbcType=VARCHAR}, #{d10,jdbcType=VARCHAR},
+      #{d11,jdbcType=VARCHAR}, #{d12,jdbcType=VARCHAR}, #{d13,jdbcType=VARCHAR}, #{d14,jdbcType=VARCHAR},
+      #{d15,jdbcType=VARCHAR}, #{d16,jdbcType=VARCHAR}, #{d17,jdbcType=VARCHAR}, #{d18,jdbcType=VARCHAR},
+      #{d19,jdbcType=VARCHAR}, #{d20,jdbcType=VARCHAR}, #{e01,jdbcType=VARCHAR}, #{e02,jdbcType=VARCHAR},
+      #{e03,jdbcType=VARCHAR}, #{e04,jdbcType=VARCHAR}, #{e05,jdbcType=VARCHAR}, #{e06,jdbcType=VARCHAR},
+      #{e07,jdbcType=VARCHAR}, #{e08,jdbcType=VARCHAR}, #{e09,jdbcType=VARCHAR}, #{e10,jdbcType=VARCHAR},
+      #{e11,jdbcType=VARCHAR}, #{e12,jdbcType=VARCHAR}, #{e13,jdbcType=VARCHAR}, #{e14,jdbcType=VARCHAR},
+      #{e15,jdbcType=VARCHAR}, #{e16,jdbcType=VARCHAR}, #{e17,jdbcType=VARCHAR}, #{e18,jdbcType=VARCHAR},
+      #{e19,jdbcType=VARCHAR}, #{e20,jdbcType=VARCHAR}, #{e21,jdbcType=VARCHAR}, #{e22,jdbcType=VARCHAR},
+      #{e23,jdbcType=VARCHAR}, #{e24,jdbcType=VARCHAR}, #{e25,jdbcType=VARCHAR}, #{e26,jdbcType=VARCHAR},
+      #{e27,jdbcType=VARCHAR}, #{f01,jdbcType=VARCHAR}, #{f02,jdbcType=VARCHAR}, #{f03,jdbcType=VARCHAR},
+      #{f04,jdbcType=VARCHAR}, #{f05,jdbcType=VARCHAR}, #{f06,jdbcType=VARCHAR}, #{f07,jdbcType=VARCHAR},
+      #{f08,jdbcType=VARCHAR}, #{f09,jdbcType=VARCHAR}, #{f10,jdbcType=VARCHAR}, #{f11,jdbcType=VARCHAR},
+      #{f12,jdbcType=VARCHAR}, #{f13,jdbcType=VARCHAR}, #{f14,jdbcType=VARCHAR}, #{f15,jdbcType=VARCHAR},
+      #{f16,jdbcType=VARCHAR}, #{f17,jdbcType=VARCHAR}, #{f18,jdbcType=VARCHAR}, #{f19,jdbcType=VARCHAR},
+      #{f20,jdbcType=VARCHAR}, #{f21,jdbcType=VARCHAR}, #{f22,jdbcType=VARCHAR}, #{f23,jdbcType=VARCHAR},
+      #{g01,jdbcType=VARCHAR}, #{g02,jdbcType=VARCHAR}, #{g03,jdbcType=VARCHAR}, #{g04,jdbcType=VARCHAR},
+      #{g05,jdbcType=VARCHAR}, #{g06,jdbcType=VARCHAR}, #{g07,jdbcType=VARCHAR}, #{g08,jdbcType=VARCHAR},
+      #{g09,jdbcType=VARCHAR}, #{g10,jdbcType=VARCHAR}, #{g11,jdbcType=VARCHAR}, #{g12,jdbcType=VARCHAR},
+      #{g13,jdbcType=VARCHAR}, #{g14,jdbcType=VARCHAR}, #{g15,jdbcType=VARCHAR}, #{g16,jdbcType=VARCHAR},
+      #{g17,jdbcType=VARCHAR}, #{g18,jdbcType=VARCHAR}, #{g19,jdbcType=VARCHAR}, #{g20,jdbcType=VARCHAR},
+      #{h01,jdbcType=VARCHAR}, #{a01sm,jdbcType=VARCHAR}, #{a02sm,jdbcType=VARCHAR},
+      #{a03sm,jdbcType=VARCHAR}, #{a04sm,jdbcType=VARCHAR}, #{a05sm,jdbcType=VARCHAR},
+      #{a06sm,jdbcType=VARCHAR}, #{a07sm,jdbcType=VARCHAR}, #{a08sm,jdbcType=VARCHAR},
+      #{a09sm,jdbcType=VARCHAR}, #{a10sm,jdbcType=VARCHAR}, #{a11sm,jdbcType=VARCHAR},
+      #{a12sm,jdbcType=VARCHAR}, #{a13sm,jdbcType=VARCHAR}, #{a14sm,jdbcType=VARCHAR},
+      #{a15sm,jdbcType=VARCHAR}, #{a16sm,jdbcType=VARCHAR}, #{a17sm,jdbcType=VARCHAR},
+      #{a18sm,jdbcType=VARCHAR}, #{a19sm,jdbcType=VARCHAR}, #{a20sm,jdbcType=VARCHAR},
+      #{a21sm,jdbcType=VARCHAR}, #{a22sm,jdbcType=VARCHAR}, #{a23sm,jdbcType=VARCHAR},
+      #{a24sm,jdbcType=VARCHAR}, #{a25sm,jdbcType=VARCHAR}, #{a26sm,jdbcType=VARCHAR},
+      #{a27sm,jdbcType=VARCHAR}, #{a28sm,jdbcType=VARCHAR}, #{a29sm,jdbcType=VARCHAR},
+      #{a30sm,jdbcType=VARCHAR}, #{a31sm,jdbcType=VARCHAR}, #{a32sm,jdbcType=VARCHAR},
+      #{b01sm,jdbcType=VARCHAR}, #{b02sm,jdbcType=VARCHAR}, #{b03sm,jdbcType=VARCHAR},
+      #{b04sm,jdbcType=VARCHAR}, #{b05sm,jdbcType=VARCHAR}, #{b06sm,jdbcType=VARCHAR},
+      #{b07sm,jdbcType=VARCHAR}, #{b08sm,jdbcType=VARCHAR}, #{b09sm,jdbcType=VARCHAR},
+      #{b10sm,jdbcType=VARCHAR}, #{b11sm,jdbcType=VARCHAR}, #{b12sm,jdbcType=VARCHAR},
+      #{b13sm,jdbcType=VARCHAR}, #{b14sm,jdbcType=VARCHAR}, #{b15sm,jdbcType=VARCHAR},
+      #{b16sm,jdbcType=VARCHAR}, #{b17sm,jdbcType=VARCHAR}, #{b18sm,jdbcType=VARCHAR},
+      #{b19sm,jdbcType=VARCHAR}, #{b20sm,jdbcType=VARCHAR}, #{b21sm,jdbcType=VARCHAR},
+      #{b22sm,jdbcType=VARCHAR}, #{b23sm,jdbcType=VARCHAR}, #{b24sm,jdbcType=VARCHAR},
+      #{c01sm,jdbcType=VARCHAR}, #{c02sm,jdbcType=VARCHAR}, #{c03sm,jdbcType=VARCHAR},
+      #{c04sm,jdbcType=VARCHAR}, #{c05sm,jdbcType=VARCHAR}, #{c06sm,jdbcType=VARCHAR},
+      #{c07sm,jdbcType=VARCHAR}, #{c08sm,jdbcType=VARCHAR}, #{c09sm,jdbcType=VARCHAR},
+      #{c10sm,jdbcType=VARCHAR}, #{c11sm,jdbcType=VARCHAR}, #{c12sm,jdbcType=VARCHAR},
+      #{c13sm,jdbcType=VARCHAR}, #{c14sm,jdbcType=VARCHAR}, #{c15sm,jdbcType=VARCHAR},
+      #{c16sm,jdbcType=VARCHAR}, #{c17sm,jdbcType=VARCHAR}, #{c18sm,jdbcType=VARCHAR},
+      #{c19sm,jdbcType=VARCHAR}, #{c20sm,jdbcType=VARCHAR}, #{c21sm,jdbcType=VARCHAR},
+      #{c22sm,jdbcType=VARCHAR}, #{c23sm,jdbcType=VARCHAR}, #{c24sm,jdbcType=VARCHAR},
+      #{c25sm,jdbcType=VARCHAR}, #{c26sm,jdbcType=VARCHAR}, #{c27sm,jdbcType=VARCHAR},
+      #{c28sm,jdbcType=VARCHAR}, #{c29sm,jdbcType=VARCHAR}, #{c30sm,jdbcType=VARCHAR},
+      #{c31sm,jdbcType=VARCHAR}, #{d01sm,jdbcType=VARCHAR}, #{d02sm,jdbcType=VARCHAR},
+      #{d03sm,jdbcType=VARCHAR}, #{d04sm,jdbcType=VARCHAR}, #{d05sm,jdbcType=VARCHAR},
+      #{d06sm,jdbcType=VARCHAR}, #{d07sm,jdbcType=VARCHAR}, #{d08sm,jdbcType=VARCHAR},
+      #{d09sm,jdbcType=VARCHAR}, #{d10sm,jdbcType=VARCHAR}, #{d11sm,jdbcType=VARCHAR},
+      #{d12sm,jdbcType=VARCHAR}, #{d13sm,jdbcType=VARCHAR}, #{d14sm,jdbcType=VARCHAR},
+      #{d15sm,jdbcType=VARCHAR}, #{d16sm,jdbcType=VARCHAR}, #{d17sm,jdbcType=VARCHAR},
+      #{d18sm,jdbcType=VARCHAR}, #{d19sm,jdbcType=VARCHAR}, #{d20sm,jdbcType=VARCHAR},
+      #{e01sm,jdbcType=VARCHAR}, #{e02sm,jdbcType=VARCHAR}, #{e03sm,jdbcType=VARCHAR},
+      #{e04sm,jdbcType=VARCHAR}, #{e05sm,jdbcType=VARCHAR}, #{e06sm,jdbcType=VARCHAR},
+      #{e07sm,jdbcType=VARCHAR}, #{e08sm,jdbcType=VARCHAR}, #{e09sm,jdbcType=VARCHAR},
+      #{e10sm,jdbcType=VARCHAR}, #{e11sm,jdbcType=VARCHAR}, #{e12sm,jdbcType=VARCHAR},
+      #{e13sm,jdbcType=VARCHAR}, #{e14sm,jdbcType=VARCHAR}, #{e15sm,jdbcType=VARCHAR},
+      #{e16sm,jdbcType=VARCHAR}, #{e17sm,jdbcType=VARCHAR}, #{e18sm,jdbcType=VARCHAR},
+      #{e19sm,jdbcType=VARCHAR}, #{e20sm,jdbcType=VARCHAR}, #{e21sm,jdbcType=VARCHAR},
+      #{e22sm,jdbcType=VARCHAR}, #{e23sm,jdbcType=VARCHAR}, #{e24sm,jdbcType=VARCHAR},
+      #{e25sm,jdbcType=VARCHAR}, #{e26sm,jdbcType=VARCHAR}, #{e27sm,jdbcType=VARCHAR},
+      #{f01sm,jdbcType=VARCHAR}, #{f02sm,jdbcType=VARCHAR}, #{f03sm,jdbcType=VARCHAR},
+      #{f04sm,jdbcType=VARCHAR}, #{f05sm,jdbcType=VARCHAR}, #{f06sm,jdbcType=VARCHAR},
+      #{f07sm,jdbcType=VARCHAR}, #{f08sm,jdbcType=VARCHAR}, #{f09sm,jdbcType=VARCHAR},
+      #{f10sm,jdbcType=VARCHAR}, #{f11sm,jdbcType=VARCHAR}, #{f12sm,jdbcType=VARCHAR},
+      #{f13sm,jdbcType=VARCHAR}, #{f14sm,jdbcType=VARCHAR}, #{f15sm,jdbcType=VARCHAR},
+      #{f16sm,jdbcType=VARCHAR}, #{f17sm,jdbcType=VARCHAR}, #{f18sm,jdbcType=VARCHAR},
+      #{f19sm,jdbcType=VARCHAR}, #{f20sm,jdbcType=VARCHAR}, #{f21sm,jdbcType=VARCHAR},
+      #{f22sm,jdbcType=VARCHAR}, #{f23sm,jdbcType=VARCHAR}, #{g01sm,jdbcType=VARCHAR},
+      #{g02sm,jdbcType=VARCHAR}, #{g03sm,jdbcType=VARCHAR}, #{g04sm,jdbcType=VARCHAR},
+      #{g05sm,jdbcType=VARCHAR}, #{g06sm,jdbcType=VARCHAR}, #{g07sm,jdbcType=VARCHAR},
+      #{g08sm,jdbcType=VARCHAR}, #{g09sm,jdbcType=VARCHAR}, #{g10sm,jdbcType=VARCHAR},
+      #{g11sm,jdbcType=VARCHAR}, #{g12sm,jdbcType=VARCHAR}, #{g13sm,jdbcType=VARCHAR},
+      #{g14sm,jdbcType=VARCHAR}, #{g15sm,jdbcType=VARCHAR}, #{g16sm,jdbcType=VARCHAR},
+      #{g17sm,jdbcType=VARCHAR}, #{g18sm,jdbcType=VARCHAR}, #{g19sm,jdbcType=VARCHAR},
+      #{g20sm,jdbcType=VARCHAR}, #{h01sm,jdbcType=VARCHAR}, #{i01,jdbcType=VARCHAR})
+  </insert>
+
+
+
+  <select id="namelistPage" parameterType="page" resultType="pd" useCache="false">
+    select
+    <include refid="Base_Column_List" />
+    from
+         qizhe_scpc
+    where
+        1 = 1
+
+    <if test="pd.KEYW != null and pd.KEYW != ''"><!-- 关键词检索 -->
+      and
+      (
+      qname LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+      or
+      qgongsi LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+      )
+    </if>
+      <if test="pd.dataMonth != null  and pd.dataMonth != '' " >
+          and DATE_FORMAT(dateMonth,'%Y-%m') = #{pd.dataMonth}
+      </if>
+    order by qgongsi desc
+
+  </select>
+
+
+    <select id="monthListPage" parameterType="page" resultType="pd" >
+        select
+        <include refid="Base_Column_List" />
+        from
+        qizhe_scpc
+
+        where
+        DATE_FORMAT(dateMonth,'%Y-%m') = #{pd.dataMonth}
+
+        <if test="pd.KEYW != null and pd.KEYW != ''"><!-- 关键词检索 -->
+            and
+            (
+            qname LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+            or
+            qgongsi LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+            )
+        </if>
+        order by qgongsi desc
+
+    </select>
+
+    <insert id="saveImage" parameterType="Map">
+        insert into qizhe_img
+        (scpcid, projectName, resource)
+        values
+        (#{id}, #{projectName}, #{image})
+    </insert>
+
+    <select id="getImageDeal" parameterType="pd" resultType="pd">
+        SELECT  * from qizhe_img
+        WHERE scpcid = #{id} and projectName = #{projectName}
+    </select>
+    
+    <insert id="saveAudit" parameterType="pd">
+        insert into qizhe_audit
+        (scpcid, projectName, status, appeal, appealDate)
+        values
+        (#{scpcid}, #{projectName}, #{status}, #{appeal}, now())
+    </insert>
+
+    <insert id="saveAudit2" parameterType="pd">
+        insert into qizhe_audit2
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            scpcid,
+            projectName,
+            content1,
+            status1,
+            status2,
+            <if test="content1img != null">
+                content1img,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            #{scpcid},
+            #{projectName},
+            #{content1},
+            #{status1},
+            #{status2},
+            <if test="content1img != null">
+                #{content1img}
+            </if>
+
+        </trim>
+    </insert>
+
+    <select id="findAudit2" parameterType="pd" resultType="pd">
+        select * from qizhe_audit2
+        where scpcid = #{scpcid} and projectName = #{projectName} limit 1
+    </select>
+
+    <update id="updateAudit2" parameterType="pd">
+        update qizhe_audit2
+        <set>
+
+            <if test="status1 != null" >
+                status1 = #{status1},
+            </if>
+
+
+            <if test="content1 != null" >
+                content1 = #{content1},
+            </if>
+            <if test="content2 != null" >
+                content2 = #{content2},
+            </if>
+            <if test="content1img != null" >
+                content1img = #{content1img},
+            </if>
+            <if test="content2img != null" >
+                content2img = #{content2img},
+            </if>
+            <if test="audit1 != null" >
+                audit1 = #{audit1},
+            </if>
+            <if test="audit2 != null" >
+                audit2 = #{audit2},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="getAuditById"  resultType="com.fh.entity.qizhe.Audit">
+        SELECT  *  from qizhe_audit
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateAppealReply" parameterType="pd">
+        UPDATE qizhe_audit
+        set appealReply = #{appealReply},
+        status = #{status},
+        appealReplyDate = now()
+        where id = #{id}
+    </update>
+
+    <update id="updateLastReply" parameterType="pd">
+        UPDATE qizhe_audit
+        set lastReply = #{lastReply},
+        status = #{status},
+        lastReplyDate = now()
+        where id = #{id}
+    </update>
+
+    <select id="countAudit" parameterType="pd" resultType="Long">
+        select count(1) from qizhe_audit
+        where scpcid = #{scpcid} and projectName = #{projectName}
+    </select>
+
+    <select id="countWaitProcess" parameterType="pd">
+        select count(1) from qizhe_audit
+        where scpcid = #{scpcid} and projectName = #{projectName}, and status not in (1, 3)
+    </select>
+
+    <select id="getAuditDeal" parameterType="pd" resultType="pd">
+        SELECT * from qizhe_audit
+        where id = #{id}
+    </select>
+
+    <select id="getAuditByscpcid" resultType="com.fh.entity.qizhe.Audit">
+        SELECT * from qizhe_audit
+        where scpcid = #{scpcid}
+    </select>
+
+  <select id="findById" parameterType="pd" resultType="pd">
+  select
+  <include refid="Base_Column_List" />
+  from
+  qizhe_scpc
+  where
+  ID = #{ID}
+</select>
+
+  <select id="findByName" parameterType="pd" resultType="pd">
+    select
+    <include refid="Base_Column_List" />
+    from
+    qizhe_scpc
+    where
+    qname = #{qname}
+  </select>
+
+
+
+  <select id="qnamePage" parameterType="page" resultType="pd">
+    select
+    <include refid="Base_Column_List" />
+    from
+    qizhe_scpc
+    where
+      qnamehao = #{pd.USERNAME}
+    <if test="pd.KEYW != null and pd.KEYW != ''"><!-- 关键词检索 -->
+      and
+      (
+      qname LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+      or
+      qgongsi LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+      )
+    </if>
+      <if test="pd.dataMonth != null and pd.dataMonth != ''">
+         and DATE_FORMAT(dateMonth,'%Y-%m') = #{pd.dataMonth}
+      </if>
+    order by qgongsi desc
+  </select>
+
+
+  <select id="qgongsiPage" parameterType="page" resultType="pd">
+    select
+    <include refid="Base_Column_List" />
+    from
+    qizhe_scpc
+    where
+    qgongsi = #{pd.USERNAME}
+    <if test="pd.KEYW != null and pd.KEYW != ''"><!-- 关键词检索 -->
+      and
+      (
+      qname LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+      or
+      qgongsi LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+      )
+    </if>
+      <if test="pd.dataMonth != null and pd.dataMonth != '' ">
+         and DATE_FORMAT(dateMonth,'%Y-%m') = #{pd.dataMonth}
+      </if>
+    order by qgongsi desc
+
+
+  </select>
+
+  <update id="update" parameterType="pd">
+    update qizhe_scpc
+    set qname = #{qname,jdbcType=VARCHAR},
+      bumen = #{bumen,jdbcType=VARCHAR},
+      qgongsi = #{qgongsi,jdbcType=VARCHAR},
+      qbianhao = #{qbianhao,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      qnamehao = #{qnamehao,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      wc = #{wc,jdbcType=VARCHAR},
+      bianli = #{bianli,jdbcType=VARCHAR},
+      newdate = now(),
+      jinzhandate = #{jinzhandate,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      jinzhan = #{jinzhan,jdbcType=VARCHAR},
+      lizhan = #{lizhan,jdbcType=VARCHAR},
+      fname = #{fname,jdbcType=VARCHAR},
+       af = #{af,jdbcType=VARCHAR},
+       bf = #{bf,jdbcType=VARCHAR},
+       cf = #{cf,jdbcType=VARCHAR},
+       df = #{df,jdbcType=VARCHAR},
+       ef = #{ef,jdbcType=VARCHAR},
+       ff = #{ff,jdbcType=VARCHAR},
+        gf = #{gf,jdbcType=VARCHAR},
+      qscore = #{qscore,jdbcType=VARCHAR},
+      beiyong1 = #{beiyong1,jdbcType=VARCHAR},
+      beiyong2 = #{beiyong2,jdbcType=VARCHAR},
+      fengongs= #{fengongs,jdbcType=VARCHAR},
+      shenggs=#{shenggs,jdbcType=VARCHAR},
+      beiyong3=#{beiyong3,jdbcType=VARCHAR},
+      beiyong4=#{beiyong4,jdbcType=VARCHAR},
+      beiyong5=#{beiyong5,jdbcType=VARCHAR},
+      beiyong6=#{beiyong6,jdbcType=VARCHAR},
+      beiyong7=#{beiyong7,jdbcType=VARCHAR},
+      beiyong8=#{beiyong8,jdbcType=VARCHAR},
+      beiyong9=#{beiyong9,jdbcType=VARCHAR},
+      a01 = #{a01,jdbcType=VARCHAR},
+      a02 = #{a02,jdbcType=VARCHAR},
+      a03 = #{a03,jdbcType=VARCHAR},
+      a04 = #{a04,jdbcType=VARCHAR},
+      a05 = #{a05,jdbcType=VARCHAR},
+      a06 = #{a06,jdbcType=VARCHAR},
+      a07 = #{a07,jdbcType=VARCHAR},
+      a08 = #{a08,jdbcType=VARCHAR},
+      a09 = #{a09,jdbcType=VARCHAR},
+      a10 = #{a10,jdbcType=VARCHAR},
+      a11 = #{a11,jdbcType=VARCHAR},
+      a12 = #{a12,jdbcType=VARCHAR},
+      a13 = #{a13,jdbcType=VARCHAR},
+      a14 = #{a14,jdbcType=VARCHAR},
+      a15 = #{a15,jdbcType=VARCHAR},
+      a16 = #{a16,jdbcType=VARCHAR},
+      a17 = #{a17,jdbcType=VARCHAR},
+      a18 = #{a18,jdbcType=VARCHAR},
+      a19 = #{a19,jdbcType=VARCHAR},
+      a20 = #{a20,jdbcType=VARCHAR},
+      a21 = #{a21,jdbcType=VARCHAR},
+      a22 = #{a22,jdbcType=VARCHAR},
+      a23 = #{a23,jdbcType=VARCHAR},
+      a24 = #{a24,jdbcType=VARCHAR},
+      a25 = #{a25,jdbcType=VARCHAR},
+      a26 = #{a26,jdbcType=VARCHAR},
+      a27 = #{a27,jdbcType=VARCHAR},
+      a28 = #{a28,jdbcType=VARCHAR},
+      a29 = #{a29,jdbcType=VARCHAR},
+      a30 = #{a30,jdbcType=VARCHAR},
+      a31 = #{a31,jdbcType=VARCHAR},
+      a32 = #{a32,jdbcType=VARCHAR},
+      b01 = #{b01,jdbcType=VARCHAR},
+      b02 = #{b02,jdbcType=VARCHAR},
+      b03 = #{b03,jdbcType=VARCHAR},
+      b04 = #{b04,jdbcType=VARCHAR},
+      b05 = #{b05,jdbcType=VARCHAR},
+      b06 = #{b06,jdbcType=VARCHAR},
+      b07 = #{b07,jdbcType=VARCHAR},
+      b08 = #{b08,jdbcType=VARCHAR},
+      b09 = #{b09,jdbcType=VARCHAR},
+      b10 = #{b10,jdbcType=VARCHAR},
+      b11 = #{b11,jdbcType=VARCHAR},
+      b12 = #{b12,jdbcType=VARCHAR},
+      b13 = #{b13,jdbcType=VARCHAR},
+      b14 = #{b14,jdbcType=VARCHAR},
+      b15 = #{b15,jdbcType=VARCHAR},
+      b16 = #{b16,jdbcType=VARCHAR},
+      b17 = #{b17,jdbcType=VARCHAR},
+      b18 = #{b18,jdbcType=VARCHAR},
+      b19 = #{b19,jdbcType=VARCHAR},
+      b20 = #{b20,jdbcType=VARCHAR},
+      b21 = #{b21,jdbcType=VARCHAR},
+      b22 = #{b22,jdbcType=VARCHAR},
+      b23 = #{b23,jdbcType=VARCHAR},
+      b24 = #{b24,jdbcType=VARCHAR},
+      c01 = #{c01,jdbcType=VARCHAR},
+      c02 = #{c02,jdbcType=VARCHAR},
+      c03 = #{c03,jdbcType=VARCHAR},
+      c04 = #{c04,jdbcType=VARCHAR},
+      c05 = #{c05,jdbcType=VARCHAR},
+      c06 = #{c06,jdbcType=VARCHAR},
+      c07 = #{c07,jdbcType=VARCHAR},
+      c08 = #{c08,jdbcType=VARCHAR},
+      c09 = #{c09,jdbcType=VARCHAR},
+      c10 = #{c10,jdbcType=VARCHAR},
+      c11 = #{c11,jdbcType=VARCHAR},
+      c12 = #{c12,jdbcType=VARCHAR},
+      c13 = #{c13,jdbcType=VARCHAR},
+      c14 = #{c14,jdbcType=VARCHAR},
+      c15 = #{c15,jdbcType=VARCHAR},
+      c16 = #{c16,jdbcType=VARCHAR},
+      c17 = #{c17,jdbcType=VARCHAR},
+      c18 = #{c18,jdbcType=VARCHAR},
+      c19 = #{c19,jdbcType=VARCHAR},
+      c20 = #{c20,jdbcType=VARCHAR},
+      c21 = #{c21,jdbcType=VARCHAR},
+      c22 = #{c22,jdbcType=VARCHAR},
+      c23 = #{c23,jdbcType=VARCHAR},
+      c24 = #{c24,jdbcType=VARCHAR},
+      c25 = #{c25,jdbcType=VARCHAR},
+      c26 = #{c26,jdbcType=VARCHAR},
+      c27 = #{c27,jdbcType=VARCHAR},
+      c28 = #{c28,jdbcType=VARCHAR},
+      c29 = #{c29,jdbcType=VARCHAR},
+      c30 = #{c30,jdbcType=VARCHAR},
+      c31 = #{c31,jdbcType=VARCHAR},
+      d01 = #{d01,jdbcType=VARCHAR},
+      d02 = #{d02,jdbcType=VARCHAR},
+      d03 = #{d03,jdbcType=VARCHAR},
+      d04 = #{d04,jdbcType=VARCHAR},
+      d05 = #{d05,jdbcType=VARCHAR},
+      d06 = #{d06,jdbcType=VARCHAR},
+      d07 = #{d07,jdbcType=VARCHAR},
+      d08 = #{d08,jdbcType=VARCHAR},
+      d09 = #{d09,jdbcType=VARCHAR},
+      d10 = #{d10,jdbcType=VARCHAR},
+      d11 = #{d11,jdbcType=VARCHAR},
+      d12 = #{d12,jdbcType=VARCHAR},
+      d13 = #{d13,jdbcType=VARCHAR},
+      d14 = #{d14,jdbcType=VARCHAR},
+      d15 = #{d15,jdbcType=VARCHAR},
+      d16 = #{d16,jdbcType=VARCHAR},
+      d17 = #{d17,jdbcType=VARCHAR},
+      d18 = #{d18,jdbcType=VARCHAR},
+      d19 = #{d19,jdbcType=VARCHAR},
+      d20 = #{d20,jdbcType=VARCHAR},
+      e01 = #{e01,jdbcType=VARCHAR},
+      e02 = #{e02,jdbcType=VARCHAR},
+      e03 = #{e03,jdbcType=VARCHAR},
+      e04 = #{e04,jdbcType=VARCHAR},
+      e05 = #{e05,jdbcType=VARCHAR},
+      e06 = #{e06,jdbcType=VARCHAR},
+      e07 = #{e07,jdbcType=VARCHAR},
+      e08 = #{e08,jdbcType=VARCHAR},
+      e09 = #{e09,jdbcType=VARCHAR},
+      e10 = #{e10,jdbcType=VARCHAR},
+      e11 = #{e11,jdbcType=VARCHAR},
+      e12 = #{e12,jdbcType=VARCHAR},
+      e13 = #{e13,jdbcType=VARCHAR},
+      e14 = #{e14,jdbcType=VARCHAR},
+      e15 = #{e15,jdbcType=VARCHAR},
+      e16 = #{e16,jdbcType=VARCHAR},
+      e17 = #{e17,jdbcType=VARCHAR},
+      e18 = #{e18,jdbcType=VARCHAR},
+      e19 = #{e19,jdbcType=VARCHAR},
+      e20 = #{e20,jdbcType=VARCHAR},
+      e21 = #{e21,jdbcType=VARCHAR},
+      e22 = #{e22,jdbcType=VARCHAR},
+      e23 = #{e23,jdbcType=VARCHAR},
+      e24 = #{e24,jdbcType=VARCHAR},
+      e25 = #{e25,jdbcType=VARCHAR},
+      e26 = #{e26,jdbcType=VARCHAR},
+      e27 = #{e27,jdbcType=VARCHAR},
+      f01 = #{f01,jdbcType=VARCHAR},
+      f02 = #{f02,jdbcType=VARCHAR},
+      f03 = #{f03,jdbcType=VARCHAR},
+      f04 = #{f04,jdbcType=VARCHAR},
+      f05 = #{f05,jdbcType=VARCHAR},
+      f06 = #{f06,jdbcType=VARCHAR},
+      f07 = #{f07,jdbcType=VARCHAR},
+      f08 = #{f08,jdbcType=VARCHAR},
+      f09 = #{f09,jdbcType=VARCHAR},
+      f10 = #{f10,jdbcType=VARCHAR},
+      f11 = #{f11,jdbcType=VARCHAR},
+      f12 = #{f12,jdbcType=VARCHAR},
+      f13 = #{f13,jdbcType=VARCHAR},
+      f14 = #{f14,jdbcType=VARCHAR},
+      f15 = #{f15,jdbcType=VARCHAR},
+      f16 = #{f16,jdbcType=VARCHAR},
+      f17 = #{f17,jdbcType=VARCHAR},
+      f18 = #{f18,jdbcType=VARCHAR},
+      f19 = #{f19,jdbcType=VARCHAR},
+      f20 = #{f20,jdbcType=VARCHAR},
+      f21 = #{f21,jdbcType=VARCHAR},
+      f22 = #{f22,jdbcType=VARCHAR},
+      f23 = #{f23,jdbcType=VARCHAR},
+      g01 = #{g01,jdbcType=VARCHAR},
+      g02 = #{g02,jdbcType=VARCHAR},
+      g03 = #{g03,jdbcType=VARCHAR},
+      g04 = #{g04,jdbcType=VARCHAR},
+      g05 = #{g05,jdbcType=VARCHAR},
+      g06 = #{g06,jdbcType=VARCHAR},
+      g07 = #{g07,jdbcType=VARCHAR},
+      g08 = #{g08,jdbcType=VARCHAR},
+      g09 = #{g09,jdbcType=VARCHAR},
+      g10 = #{g10,jdbcType=VARCHAR},
+      g11 = #{g11,jdbcType=VARCHAR},
+      g12 = #{g12,jdbcType=VARCHAR},
+      g13 = #{g13,jdbcType=VARCHAR},
+      g14 = #{g14,jdbcType=VARCHAR},
+      g15 = #{g15,jdbcType=VARCHAR},
+      g16 = #{g16,jdbcType=VARCHAR},
+      g17 = #{g17,jdbcType=VARCHAR},
+      g18 = #{g18,jdbcType=VARCHAR},
+      g19 = #{g19,jdbcType=VARCHAR},
+      g20 = #{g20,jdbcType=VARCHAR},
+      h01 = #{h01,jdbcType=VARCHAR},
+      a01sm = #{a01sm,jdbcType=VARCHAR},
+      a02sm = #{a02sm,jdbcType=VARCHAR},
+      a03sm = #{a03sm,jdbcType=VARCHAR},
+      a04sm = #{a04sm,jdbcType=VARCHAR},
+      a05sm = #{a05sm,jdbcType=VARCHAR},
+      a06sm = #{a06sm,jdbcType=VARCHAR},
+      a07sm = #{a07sm,jdbcType=VARCHAR},
+      a08sm = #{a08sm,jdbcType=VARCHAR},
+      a09sm = #{a09sm,jdbcType=VARCHAR},
+      a10sm = #{a10sm,jdbcType=VARCHAR},
+      a11sm = #{a11sm,jdbcType=VARCHAR},
+      a12sm = #{a12sm,jdbcType=VARCHAR},
+      a13sm = #{a13sm,jdbcType=VARCHAR},
+      a14sm = #{a14sm,jdbcType=VARCHAR},
+      a15sm = #{a15sm,jdbcType=VARCHAR},
+      a16sm = #{a16sm,jdbcType=VARCHAR},
+      a17sm = #{a17sm,jdbcType=VARCHAR},
+      a18sm = #{a18sm,jdbcType=VARCHAR},
+      a19sm = #{a19sm,jdbcType=VARCHAR},
+      a20sm = #{a20sm,jdbcType=VARCHAR},
+      a21sm = #{a21sm,jdbcType=VARCHAR},
+      a22sm = #{a22sm,jdbcType=VARCHAR},
+      a23sm = #{a23sm,jdbcType=VARCHAR},
+      a24sm = #{a24sm,jdbcType=VARCHAR},
+      a25sm = #{a25sm,jdbcType=VARCHAR},
+      a26sm = #{a26sm,jdbcType=VARCHAR},
+      a27sm = #{a27sm,jdbcType=VARCHAR},
+      a28sm = #{a28sm,jdbcType=VARCHAR},
+      a29sm = #{a29sm,jdbcType=VARCHAR},
+      a30sm = #{a30sm,jdbcType=VARCHAR},
+      a31sm = #{a31sm,jdbcType=VARCHAR},
+      a32sm = #{a32sm,jdbcType=VARCHAR},
+      b01sm = #{b01sm,jdbcType=VARCHAR},
+      b02sm = #{b02sm,jdbcType=VARCHAR},
+      b03sm = #{b03sm,jdbcType=VARCHAR},
+      b04sm = #{b04sm,jdbcType=VARCHAR},
+      b05sm = #{b05sm,jdbcType=VARCHAR},
+      b06sm = #{b06sm,jdbcType=VARCHAR},
+      b07sm = #{b07sm,jdbcType=VARCHAR},
+      b08sm = #{b08sm,jdbcType=VARCHAR},
+      b09sm = #{b09sm,jdbcType=VARCHAR},
+      b10sm = #{b10sm,jdbcType=VARCHAR},
+      b11sm = #{b11sm,jdbcType=VARCHAR},
+      b12sm = #{b12sm,jdbcType=VARCHAR},
+      b13sm = #{b13sm,jdbcType=VARCHAR},
+      b14sm = #{b14sm,jdbcType=VARCHAR},
+      b15sm = #{b15sm,jdbcType=VARCHAR},
+      b16sm = #{b16sm,jdbcType=VARCHAR},
+      b17sm = #{b17sm,jdbcType=VARCHAR},
+      b18sm = #{b18sm,jdbcType=VARCHAR},
+      b19sm = #{b19sm,jdbcType=VARCHAR},
+      b20sm = #{b20sm,jdbcType=VARCHAR},
+      b21sm = #{b21sm,jdbcType=VARCHAR},
+      b22sm = #{b22sm,jdbcType=VARCHAR},
+      b23sm = #{b23sm,jdbcType=VARCHAR},
+      b24sm = #{b24sm,jdbcType=VARCHAR},
+      c01sm = #{c01sm,jdbcType=VARCHAR},
+      c02sm = #{c02sm,jdbcType=VARCHAR},
+      c03sm = #{c03sm,jdbcType=VARCHAR},
+      c04sm = #{c04sm,jdbcType=VARCHAR},
+      c05sm = #{c05sm,jdbcType=VARCHAR},
+      c06sm = #{c06sm,jdbcType=VARCHAR},
+      c07sm = #{c07sm,jdbcType=VARCHAR},
+      c08sm = #{c08sm,jdbcType=VARCHAR},
+      c09sm = #{c09sm,jdbcType=VARCHAR},
+      c10sm = #{c10sm,jdbcType=VARCHAR},
+      c11sm = #{c11sm,jdbcType=VARCHAR},
+      c12sm = #{c12sm,jdbcType=VARCHAR},
+      c13sm = #{c13sm,jdbcType=VARCHAR},
+      c14sm = #{c14sm,jdbcType=VARCHAR},
+      c15sm = #{c15sm,jdbcType=VARCHAR},
+      c16sm = #{c16sm,jdbcType=VARCHAR},
+      c17sm = #{c17sm,jdbcType=VARCHAR},
+      c18sm = #{c18sm,jdbcType=VARCHAR},
+      c19sm = #{c19sm,jdbcType=VARCHAR},
+      c20sm = #{c20sm,jdbcType=VARCHAR},
+      c21sm = #{c21sm,jdbcType=VARCHAR},
+      c22sm = #{c22sm,jdbcType=VARCHAR},
+      c23sm = #{c23sm,jdbcType=VARCHAR},
+      c24sm = #{c24sm,jdbcType=VARCHAR},
+      c25sm = #{c25sm,jdbcType=VARCHAR},
+      c26sm = #{c26sm,jdbcType=VARCHAR},
+      c27sm = #{c27sm,jdbcType=VARCHAR},
+      c28sm = #{c28sm,jdbcType=VARCHAR},
+      c29sm = #{c29sm,jdbcType=VARCHAR},
+      c30sm = #{c30sm,jdbcType=VARCHAR},
+      c31sm = #{c31sm,jdbcType=VARCHAR},
+      d01sm = #{d01sm,jdbcType=VARCHAR},
+      d02sm = #{d02sm,jdbcType=VARCHAR},
+      d03sm = #{d03sm,jdbcType=VARCHAR},
+      d04sm = #{d04sm,jdbcType=VARCHAR},
+      d05sm = #{d05sm,jdbcType=VARCHAR},
+      d06sm = #{d06sm,jdbcType=VARCHAR},
+      d07sm = #{d07sm,jdbcType=VARCHAR},
+      d08sm = #{d08sm,jdbcType=VARCHAR},
+      d09sm = #{d09sm,jdbcType=VARCHAR},
+      d10sm = #{d10sm,jdbcType=VARCHAR},
+      d11sm = #{d11sm,jdbcType=VARCHAR},
+      d12sm = #{d12sm,jdbcType=VARCHAR},
+      d13sm = #{d13sm,jdbcType=VARCHAR},
+      d14sm = #{d14sm,jdbcType=VARCHAR},
+      d15sm = #{d15sm,jdbcType=VARCHAR},
+      d16sm = #{d16sm,jdbcType=VARCHAR},
+      d17sm = #{d17sm,jdbcType=VARCHAR},
+      d18sm = #{d18sm,jdbcType=VARCHAR},
+      d19sm = #{d19sm,jdbcType=VARCHAR},
+      d20sm = #{d20sm,jdbcType=VARCHAR},
+      e01sm = #{e01sm,jdbcType=VARCHAR},
+      e02sm = #{e02sm,jdbcType=VARCHAR},
+      e03sm = #{e03sm,jdbcType=VARCHAR},
+      e04sm = #{e04sm,jdbcType=VARCHAR},
+      e05sm = #{e05sm,jdbcType=VARCHAR},
+      e06sm = #{e06sm,jdbcType=VARCHAR},
+      e07sm = #{e07sm,jdbcType=VARCHAR},
+      e08sm = #{e08sm,jdbcType=VARCHAR},
+      e09sm = #{e09sm,jdbcType=VARCHAR},
+      e10sm = #{e10sm,jdbcType=VARCHAR},
+      e11sm = #{e11sm,jdbcType=VARCHAR},
+      e12sm = #{e12sm,jdbcType=VARCHAR},
+      e13sm = #{e13sm,jdbcType=VARCHAR},
+      e14sm = #{e14sm,jdbcType=VARCHAR},
+      e15sm = #{e15sm,jdbcType=VARCHAR},
+      e16sm = #{e16sm,jdbcType=VARCHAR},
+      e17sm = #{e17sm,jdbcType=VARCHAR},
+      e18sm = #{e18sm,jdbcType=VARCHAR},
+      e19sm = #{e19sm,jdbcType=VARCHAR},
+      e20sm = #{e20sm,jdbcType=VARCHAR},
+      e21sm = #{e21sm,jdbcType=VARCHAR},
+      e22sm = #{e22sm,jdbcType=VARCHAR},
+      e23sm = #{e23sm,jdbcType=VARCHAR},
+      e24sm = #{e24sm,jdbcType=VARCHAR},
+      e25sm = #{e25sm,jdbcType=VARCHAR},
+      e26sm = #{e26sm,jdbcType=VARCHAR},
+      e27sm = #{e27sm,jdbcType=VARCHAR},
+      f01sm = #{f01sm,jdbcType=VARCHAR},
+      f02sm = #{f02sm,jdbcType=VARCHAR},
+      f03sm = #{f03sm,jdbcType=VARCHAR},
+      f04sm = #{f04sm,jdbcType=VARCHAR},
+      f05sm = #{f05sm,jdbcType=VARCHAR},
+      f06sm = #{f06sm,jdbcType=VARCHAR},
+      f07sm = #{f07sm,jdbcType=VARCHAR},
+      f08sm = #{f08sm,jdbcType=VARCHAR},
+      f09sm = #{f09sm,jdbcType=VARCHAR},
+      f10sm = #{f10sm,jdbcType=VARCHAR},
+      f11sm = #{f11sm,jdbcType=VARCHAR},
+      f12sm = #{f12sm,jdbcType=VARCHAR},
+      f13sm = #{f13sm,jdbcType=VARCHAR},
+      f14sm = #{f14sm,jdbcType=VARCHAR},
+      f15sm = #{f15sm,jdbcType=VARCHAR},
+      f16sm = #{f16sm,jdbcType=VARCHAR},
+      f17sm = #{f17sm,jdbcType=VARCHAR},
+      f18sm = #{f18sm,jdbcType=VARCHAR},
+      f19sm = #{f19sm,jdbcType=VARCHAR},
+      f20sm = #{f20sm,jdbcType=VARCHAR},
+      f21sm = #{f21sm,jdbcType=VARCHAR},
+      f22sm = #{f22sm,jdbcType=VARCHAR},
+      f23sm = #{f23sm,jdbcType=VARCHAR},
+      g01sm = #{g01sm,jdbcType=VARCHAR},
+      g02sm = #{g02sm,jdbcType=VARCHAR},
+      g03sm = #{g03sm,jdbcType=VARCHAR},
+      g04sm = #{g04sm,jdbcType=VARCHAR},
+      g05sm = #{g05sm,jdbcType=VARCHAR},
+      g06sm = #{g06sm,jdbcType=VARCHAR},
+      g07sm = #{g07sm,jdbcType=VARCHAR},
+      g08sm = #{g08sm,jdbcType=VARCHAR},
+      g09sm = #{g09sm,jdbcType=VARCHAR},
+      g10sm = #{g10sm,jdbcType=VARCHAR},
+      g11sm = #{g11sm,jdbcType=VARCHAR},
+      g12sm = #{g12sm,jdbcType=VARCHAR},
+      g13sm = #{g13sm,jdbcType=VARCHAR},
+      g14sm = #{g14sm,jdbcType=VARCHAR},
+      g15sm = #{g15sm,jdbcType=VARCHAR},
+      g16sm = #{g16sm,jdbcType=VARCHAR},
+      g17sm = #{g17sm,jdbcType=VARCHAR},
+      g18sm = #{g18sm,jdbcType=VARCHAR},
+      g19sm = #{g19sm,jdbcType=VARCHAR},
+      g20sm = #{g20sm,jdbcType=VARCHAR},
+      h01sm = #{h01sm,jdbcType=VARCHAR},
+      i01 = #{i01,jdbcType=VARCHAR},
+      dateMonth = #{dateMonth}
+    where id = #{ID}
+  </update>
+
+  <!-- 删除-->
+  <delete id="delete" parameterType="pd">
+    delete from qizhe_scpc
+    where
+    ID = #{ID}
+  </delete>
+
+    <update id="updatekai" parameterType="pd">
+    update qizhe_scpc
+    set beiyong4 = '开'
+    </update>
+
+    <update id="updateguan" parameterType="pd">
+        update qizhe_scpc
+        set beiyong4 = '关'
+    </update>
+
+
+    <select id="findByscpcId" parameterType="pd" resultType="pd">
+        select
+        <include refid="Base_Column_List" />
+        from
+        qizhe_scpc
+        where
+        ID = #{scpcid}
+    </select>
+
+
+
+    <select id="findAuditScpclistPage" parameterType="pd" resultType="pd">
+        select
+        qscpc.id,
+        aduit2.scpcid,
+        qscpc.af,
+        qscpc.bf,
+        qscpc.cf,
+        qscpc.df,
+        qscpc.ef,
+        qscpc.ff,
+        qscpc.gf,
+        qscpc.qname,
+        qscpc.newdate,
+        qscpc.beiyong3,
+        qscpc.jinzhandate,
+        qscpc.qgongsi,
+        qscpc.bumen,
+        qscpc.qnamehao,
+        qscpc.qscore,
+        qscpc.dateMonth,
+        aduit2.projectName,
+        aduit2.content1,
+        aduit2.content2,
+        aduit2.audit1,
+        aduit2.audit2,
+        aduit2.status1
+        from qizhe_audit2 aduit2
+        LEFT  JOIN  qizhe_scpc qscpc ON  qscpc.id=aduit2.scpcid
+        where
+        aduit2.status1 != null or aduit2.status1 != ''
+
+
+        <if test="pd.KEYW != null and pd.KEYW != ''"><!-- 关键词检索 -->
+            and
+            (
+            qscpc.qname LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+            or
+            qscpc.qgongsi LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+            )
+        </if>
+
+        <if test="pd.dataMonth != null and pd.dataMonth != '' ">
+            and DATE_FORMAT(qscpc.dateMonth,'%Y-%m') = #{pd.dataMonth}
+        </if>
+        <if test="pd.status1 != null and pd.status1 != '' ">
+            and aduit2.status1 = #{pd.status1}
+        </if>
+    </select>
+
+
+
+    <select id="findAllAuditScpclistPage" parameterType="pd" resultType="pd">
+        select
+        <include refid="Column_List" />,
+        qscpc.id,
+        aduit2.scpcid,
+        aduit2.projectName,
+        aduit2.content1,
+        aduit2.content2,
+        aduit2.audit1,
+        aduit2.audit2,
+        aduit2.status1
+        from qizhe_audit2 aduit2
+        LEFT  JOIN  qizhe_scpc qscpc ON  qscpc.id=aduit2.scpcid
+        where
+        aduit2.status1 != null or aduit2.status1 != ''
+
+
+        <if test="pd.KEYW != null and pd.KEYW != ''"><!-- 关键词检索 -->
+            and
+            (
+            qscpc.qname LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+            or
+            qscpc.qgongsi LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+            )
+        </if>
+        <if test="pd.dataMonth != null and pd.dataMonth != '' ">
+            and DATE_FORMAT(qscpc.dateMonth,'%Y-%m') = #{pd.dataMonth}
+        </if>
+
+    </select>
+
+
+</mapper>

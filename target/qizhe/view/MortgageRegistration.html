@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit" />
+    <!-- 让360浏览器默认选择webkit内核 -->
+
+    <!-- 全局css -->
+    <link rel="shortcut icon" href="static/favicon.ico">
+    <link href="../static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../static/css/plugins/validate/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="../static/css/animate.css" rel="stylesheet">
+    <link href="../static/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../static/css/_fstyle.css" rel="stylesheet">
+    <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../static/css/plugins/webuploader/webuploader.css" rel="stylesheet">
+    <link href="../static/css/plugins/ztree/zTreeStyle.css" rel="stylesheet">
+    <link href="../static/css/plugins/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet" />
+    <!-- <link href="static/css/plugins/ztree/demo.css" rel="stylesheet"> -->
+
+    <!-- 全局js -->
+    <script src="../static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="../static/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="../static/js/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../static/js/plugins/validate/bootstrapValidator.min.js"></script>
+    <script src="../static/js/plugins/validate/zh_CN.js"></script>
+    <script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../static/js/plugins/jquery-treegrid/js/jquery.treegrid.min.js"></script>
+    <script src="../static/js/plugins/jquery-treegrid/js/jquery.treegrid.bootstrap3.js"></script>
+    <script src="../static/js/plugins/jquery-treegrid/extension/jquery.treegrid.extension.js"></script>
+    <script src="../static/js/plugins/layer/layer.min.js"></script>
+    <script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="../static/js/plugins/webuploader/webuploader.min.js"></script>
+    <script src="../static/js/common/ajax-object.js"></script>
+    <script src="../static/js/common/bootstrap-table-object.js"></script>
+    <script src="../static/js/common/tree-table-object.js"></script>
+    <script src="../static/js/common/web-upload-object.js"></script>
+    <script src="../static/js/common/ztree-object.js"></script>
+    <script src="../static/js/common/Feng.js"></script>
+
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+
+
+
+        <div id="order">
+            <div class="col-md-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tabbable tabs-left">
+                            
+                            <div class="tab-content" id="mytab">
+                                <div id="dropdown4" class="tab-pane active">
+                                    <form class="form" role="form" method="post" enctype="multipart/form-data" onsubmit="return false;">
+                                        <h2>合同面签</h2>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>面签日期</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InterviewDate" name="InterviewDate" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入面签日期" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>面签经办人</label>
+                                                    <input type="text" class="form-control" id="InterviewOperate" name="InterviewOperate" placeholder="请输入面签经办人" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>面签照片是否上传</label>
+                                                    <select class="form-control" id="IsInterviewPhoto" name="IsInterviewPhoto" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>签署后的纸质合同扫描件是否上传</label>
+                                                    <select class="form-control" id="IsScanningCopy" name="IsScanningCopy" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2>抵押登记信息</h2>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>抵押登记办理日期</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="transactDate" name="transactDate" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入抵押登记办理日期" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>抵押登记回执是否上传</label>
+                                                    <select class="form-control" id="isMortgageRegister" name="isMortgageRegister" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>抵押登记经办人</label>
+                                                    <input type="text" class="form-control" id="operateUser" name="operateUser" placeholder="请输入抵押登记经办人" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>抵押登记查询日期</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="QueryDate" name="QueryDate" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入抵押登记查询日期" required disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>查询结果是否上传</label>
+                                                    <select class="form-control" id="isuploadresult" name="isuploadresult" required disabled>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>查询人</label>
+                                                    <input type="text" class="form-control" id="QueryUser" name="QueryUser" placeholder="请输入查询人" required disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2>GPS安装信息</h2>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>GPS编号1</label>
+                                                    <input type="text" class="form-control" id="GPSNo1" name="GPSNo1" placeholder="请输入GPS编号1" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>GPS编号2</label>
+                                                    <input type="text" class="form-control" id="GPSNo2" name="GPSNo2" placeholder="请输入GPS编号2" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>GPS编号3</label>
+                                                    <input type="text" class="form-control" id="GPSNo3" name="GPSNo3" placeholder="请输入GPS编号3" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>GPS安装日期</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="GPSInstallDate" name="GPSInstallDate" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入GPS安装日期" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                        
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>GPS安装师</label>
+                                                    <input type="text" class="form-control" id="GPSInstaller" name="GPSInstaller" placeholder="请输入GPS安装师" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>GPS1信号是否有效</label>
+                                                    <select class="form-control" id="isGPSValid1" name="isGPSValid1" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>GPS2信号是否有效</label>
+                                                    <select class="form-control" id="isGPSValid2" name="isGPSValid2" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>GPS3信号是否有效</label>
+                                                    <select class="form-control" id="isGPSValid3" name="isGPSValid3" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>确认人</label>
+                                                    <input type="text" class="form-control" id="ConfirmPeople" name="ConfirmPeople" placeholder="请输入确认人">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="up20">
+                                            <div class="col-md-12">
+                                                <div class="form-group am-form-file">
+                                                    <label>车辆GPS照片</label>
+                                                    <input type="file" id="upload20" name="file" multiple>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-sm btn-primary icon-check">提交</button>
+                                                <button type="button" class="btn btn-sm btn-danger  icon-reply">取消</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                              
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PAGE CONTENT ENDS -->
+            </div>
+        </div>
+
+
+        <!-- 自定义 -->
+        <link rel="stylesheet" href="../static/js/plugins/bootstrapfileinput/css/fileinput.css" type="text/css">
+        <script type="text/javascript" src="../static/js/plugins/bootstrapfileinput/js/fileinput2.js"></script>
+        <script type="text/javascript" src="../static/js/plugins/bootstrapfileinput/js/locales/zh.js"></script>
+        <link rel="stylesheet" href="../static/js/plugins/bootstrapfileinput/themes/explorer/theme.css" type="text/css">
+        <script type="text/javascript" src="../static/js/plugins/bootstrapfileinput/themes/explorer/theme.js"></script>
+        <link href="../static/css/main.css" rel="stylesheet">
+      
+        <script>
+          
+                 setTimeout(function(){
+		 $('input[type=text]').val(Math.random().toString(36).slice(2,8))
+		 $('.layer-date').val('2017-07-07')
+		 //$('input[type=number]').val(Math.floor(Math.random()*5))
+		 $('input[type=number]').val(5)
+		 $('textarea').val(18516528222)
+		 $('select').find('option:last').prop('selected',true)
+		 $('input[type=radio]').prop('checked',true)
+		 },1000)
+
+            // 进行对象序列化
+            jQuery.prototype.serializeObject=function(){  
+                var a,o,h,i,e;  
+                a=this.serializeArray();  
+                o={};  
+                h=o.hasOwnProperty;  
+                for(i=0;i<a.length;i++){  
+                    e=a[i];  
+                    if(!h.call(o,e.name)){  
+                        o[e.name]=e.value;  
+                    }  
+                }  
+                return o;  
+            };
+    
+    
+        
+ 
+        //影像信息     
+        //===============================================================================
+
+
+
+        
+        //车辆GPS照片
+        var upload20 = []
+        $('#upload20').fileinput({
+            theme: 'explorer',
+            language: 'zh', //设置语言
+            uploadUrl: Feng.ctxPath + '/mgr/upload', //上传的地址
+            allowedFileExtensions: ['jpg', 'jpeg', 'gif', 'png', 'pdf'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: true,//是否显示标题
+            autoReplace: true,
+            maxFileSize: 10000,//单位为kb，如果为0表示不限制文件大小
+            maxFileCount: 10, //表示允许同时上传的最大文件个数
+            validateInitialCount: true,
+            overwriteInitial: false,
+            layoutTemplates: {
+                actionUpload: '',    //设置为空可去掉上传按钮
+                // actionDelete:''  //设置为空可去掉删除按钮
+            }
+        }).on("fileuploaded", function (event, data, previewId, index) {
+            var json = data.response
+            JSON.stringify(json)
+            upload20.push(json)
+            localStorage.setItem('upload20', upload20)
+        })
+
+        $(document).on('click', '#up20 .phdelbtn', function () {
+            if ($(this).attr('data-url') != null) {
+                var array = localStorage.getItem('upload20').split(',')
+                var str = $(this).attr('data-url')
+                var arr = []
+                arr = $.grep(array, function (n, i) { return n != str });
+                localStorage.setItem('upload20', arr)
+                $.get('<%=basePath%>pictures/delete?url=' + str)
+            }
+        });	      
+
+
+
+
+
+
+
+        $('#dropdown4 [type=submit]').click(function () {
+
+            var tab = $(this).parents('form')   
+            $(tab).off('submit').on('submit', function (e) {
+                var json = $(this).serializeObject()
+                // json['id'] = location.search.substr(4)
+
+                var imglen = tab.find('.kv-zoom-cache .kv-file-content  img').length
+                var old = tab.find('.kv-zoom-cache .kv-file-content  img').attr('data-img')
+                var ls20 = localStorage.getItem('upload20')
+
+                
+<!--$('#up20').find('.kv-zoom-cache .kv-file-content img').length = 1-->
+                if (false) {
+                    layer.msg('车辆GPS照片图片不能为空,必须先上传')
+                }
+                else {
+                    function count(obj, ls, name) {
+                        //取得旧图片数据
+                        var oldimg = []
+                        for (var i = 0; i < imglen; i++) {
+                            var val = obj.find('.kv-zoom-cache .kv-file-content img').eq(i).attr('data-img')
+                            if (typeof val != 'undefined') {
+                                oldimg.push(val)
+                            }
+                        }
+                        //新图片转数组
+                        var lss = []
+                        if (ls == null || ls == undefined) {
+                            lss = []
+                        }
+                        else {
+                            lss.push(ls)
+                        }
+                        //新旧图片进行数组合并  
+                        var arry = $.merge(oldimg, lss)
+                        json[name] = arry.join(',')
+
+                    }
+
+                    count($('#up20'), ls20, 'upload20')
+
+                     
+                   json['odrderID']=$('#order').val()
+                    
+                     $('input,select').each(function(i,v){
+				            if ($(this).prop('disabled') ==  true){
+				                if (  $(this).is('input') ){
+				                 json[$(this).attr('name')]=$(this).val()  
+				                }
+				                else if (  $(this).is('select') ){
+				                json[$(this).attr('name')]=$(this).find(':selected').val()                    
+				                }
+				            }
+				        })       
+                    
+                      console.log(JSON.stringify(json, null, 4)) 
+                    
+                    $.ajax({
+                        type: 'post',
+                        url: '../MortgageRegistration',
+                        cache: false,
+                        async: false,
+                        data:{input:JSON.stringify(json)},
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.code == 200) {
+                                layer.msg('提交成功')
+                            }
+                            else if (data.code == 202) {
+                                layer.msg('不能重复提交');
+                            }
+                        },
+                        error: function (data) {
+                            layer.msg('提交失败，请重试');
+                        },
+                    })
+                }
+                return false
+            })
+
+        })        
+    
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

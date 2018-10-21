@@ -1,0 +1,16 @@
+#mytab{margin-top: 15px;}
+.input-group-addon {background-color: #eee;}
+#ui-datepicker-div{display: none;}
+
+
+
+#kvFileinputModal .btn-toggleheader{display: none;} 
+#kvFileinputModal .btn-fullscreen{display: none;} 
+#kvFileinputModal .btn-borderless{display: none;} 
+#kvFileinputModal .btn:active{top: 0px;left: 0px;}
+#kvFileinputModal .btn-prev{top: 40%!important;left: 0px!important;}
+#kvFileinputModal .btn-next{top: 40%!important;left: auto!important;}
+#kvFileinputModal .kv-zoom-actions{margin-right: 1%;}
+.file-input .hidden-xs{display: inline !important;}
+.kv-file-content img{height: 160px;}
+.file-zoom-content img{display: inline-block;margin:auto;width: 100%;height: auto} 

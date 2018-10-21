@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdIssueMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into cbw_issue(
+			USERID,	
+			TITLE,	
+			CONTENT,	
+			TAGS,	
+			TYPE,	
+			SOURCE,	
+			FAVORITES_RATE,	
+			ANSWER_RATE,	
+			ISDELETED,	
+			CREATE_TIME,	
+			UPDATE_TIME,
+			ISAD,
+			LINK
+		) values (
+			#{USERID},	
+			#{TITLE},	
+			#{CONTENT},	
+			#{TAGS},	
+			#{TYPE},	
+			#{SOURCE},	
+			#{FAVORITES_RATE},	
+			#{ANSWER_RATE},	
+			0,	
+			now(),
+			now(),
+			#{ISAD},
+			#{LINK}
+		)
+	</insert>
+
+	<!-- 新增图片和问题关联-->
+	<insert id="addAdIssueImage" parameterType="pd">
+		insert into cbw_issue_image(
+		issueId,
+		imageId
+		) values (
+		#{issueId},
+		#{imageId}
+		)
+	</insert>
+	<!-- 新增问题 -->
+	<insert id="saveU" parameterType="pd" flushCache="false">
+		insert into cbw_issue(
+			USERID,	
+			TITLE,	
+			CONTENT,	
+			TAGS,	
+			TYPE,	
+			SOURCE,	
+			FAVORITES_RATE,	
+			ANSWER_RATE,	
+			ISDELETED,	
+			CREATE_TIME,	
+			UPDATE_TIME
+		) values (
+			#{USERID},	
+			#{TITLE},	
+			#{CONTENT},	
+			#{TAGS},	
+			#{TYPE},	
+			#{SOURCE},	
+			#{FAVORITES_RATE},	
+			#{ANSWER_RATE},	
+			#{ISDELETED},	
+			#{CREATE_TIME},	
+			#{UPDATE_TIME}
+		)
+	</insert>
+	
+	
+	<!-- 导入用户到数据库 -->
+	<insert id="saveUser" parameterType="pd" flushCache="false">
+		insert into cbw_user(
+			id,		
+			name,	
+			job,
+			province,
+			city,
+			CREATE_TIME,	
+			UPDATE_TIME
+		) values (
+			#{id},	
+			#{name},
+			#{job},
+			#{province},
+			#{city},
+			#{CREATE_TIME},	
+			#{UPDATE_TIME}
+		)
+	</insert>
+	
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from cbw_issue
+		where 
+			ID = #{ID}
+	</delete>
+
+	<!-- 通过广告id删除关联关系-->
+	<delete id="deleteAdIssueImage" parameterType="pd">
+		delete from cbw_issue_image
+		where
+			issueId = #{ID}
+	</delete>
+
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  cbw_issue
+			set 
+				USERID = #{USERID},
+				TITLE = #{TITLE},
+				CONTENT = #{CONTENT},
+				TAGS = #{TAGS},
+				TYPE = #{TYPE},
+				SOURCE = #{SOURCE},
+				FAVORITES_RATE = #{FAVORITES_RATE},
+				ANSWER_RATE = #{ANSWER_RATE},
+				ISDELETED = 0,
+				CREATE_TIME = now(),
+				UPDATE_TIME = now(),
+				ISAD = #{ISAD},
+				LINK = #{LINK},
+			ID = ID
+			where 
+				ID = #{ID}
+	</update>
+
+	<!-- 软删除 -->
+	<update id="editIsDelete" parameterType="pd">
+		update  cbw_issue
+			set
+
+				ISDELETED = 1
+
+			where
+				ID = #{ID}
+	</update>
+	<!-- 软删除 -->
+
+	<update id="editIsDeleteByList" parameterType="Integer">
+		update  cbw_issue
+		set
+			ISDELETED = 1
+		where
+		ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</update>
+
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			USERID,	
+			TITLE,	
+			CONTENT,	
+			TAGS,	
+			TYPE,	
+			SOURCE,	
+			FAVORITES_RATE,	
+			ANSWER_RATE,	
+			ISDELETED,	
+			CREATE_TIME,	
+			UPDATE_TIME,	
+			ISAD,
+			LINK,
+			ID
+		from 
+			cbw_issue
+		where 
+			ID = #{ID}
+			and ISDELETED=0
+	</select>
+	
+	<!-- 广告列表 -->
+	<select id="adlistPage" parameterType="page" resultType="pd">
+		select
+				a.USERID,	
+				a.TITLE,	
+				a.CONTENT,	
+				a.TAGS,	
+				a.TYPE,	
+				a.SOURCE,	
+				a.FAVORITES_RATE,	
+				a.ANSWER_RATE,	
+				a.ISDELETED,	
+				a.CREATE_TIME,	
+				a.UPDATE_TIME,	
+				a.ID,
+				a.isAd,
+				a.link
+		from 
+				cbw_issue a
+		where a.isAd = 1
+		and ISDELETED=0
+		<if test="pd.KEYW != null and pd.KEYW != ''"><!-- 关键词检索 -->
+			and
+				(
+					 a.USERID LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+					 or 
+					 a.TITLE LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%') 
+					 or
+					 a.TAGS LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+					 or
+					 a.CONTENT LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+					 or 
+					 a.SOURCE LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+				)
+		</if>
+		order by a.CREATE_TIME desc
+	</select>
+	
+	<!-- H5广告列表 -->
+	<select id="adProblemList" resultType="pd">
+		select
+				a.title,	
+				a.content,	
+				a.tags,	
+				a.source,	
+				a.favorites_rate as favoritesRate,	
+				a.answer_rate as answerRate,
+				a.create_time as createTime,		
+				a.id,
+				a.link
+		from 
+				cbw_issue a
+		where a.isAd = 1
+		and ISDELETED=0
+		order by a.CREATE_TIME desc
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.USERID,	
+				a.TITLE,	
+				a.CONTENT,	
+				a.TAGS,	
+				a.TYPE,	
+				a.SOURCE,	
+				a.FAVORITES_RATE,	
+				a.ANSWER_RATE,	
+				a.ISDELETED,	
+				a.CREATE_TIME,	
+				a.UPDATE_TIME,	
+				a.ID
+		from 
+				cbw_issue a
+	</select>
+	<!-- 查询最新广告ID -->
+	<select id="findAdIssueId" resultType="pd">
+		select
+		a.id
+		from
+		cbw_issue a
+		where
+		isAd = 1
+		and ISDELETED=0
+		order by create_time desc
+		limit 1
+	</select>
+
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from cbw_issue
+		where 
+			ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	<!-- 批量删除关联关系 -->
+	<delete id="deleteAllAdIssueImage" parameterType="String">
+		delete from cbw_issue_image
+		where
+			issueId in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+
+</mapper>

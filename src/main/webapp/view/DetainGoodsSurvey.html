@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit" />
+    <!-- 让360浏览器默认选择webkit内核 -->
+
+    <!-- 全局css -->
+    <link rel="shortcut icon" href="static/favicon.ico">
+    <link href="../static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../static/css/plugins/validate/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="../static/css/animate.css" rel="stylesheet">
+    <link href="../static/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../static/css/_fstyle.css" rel="stylesheet">
+    <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../static/css/plugins/webuploader/webuploader.css" rel="stylesheet">
+    <link href="../static/css/plugins/ztree/zTreeStyle.css" rel="stylesheet">
+    <link href="../static/css/plugins/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet" />
+    <!-- <link href="static/css/plugins/ztree/demo.css" rel="stylesheet"> -->
+
+    <!-- 全局js -->
+    <script src="../static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="../static/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="../static/js/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../static/js/plugins/validate/bootstrapValidator.min.js"></script>
+    <script src="../static/js/plugins/validate/zh_CN.js"></script>
+    <script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../static/js/plugins/jquery-treegrid/js/jquery.treegrid.min.js"></script>
+    <script src="../static/js/plugins/jquery-treegrid/js/jquery.treegrid.bootstrap3.js"></script>
+    <script src="../static/js/plugins/jquery-treegrid/extension/jquery.treegrid.extension.js"></script>
+    <script src="../static/js/plugins/layer/layer.min.js"></script>
+    <script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="../static/js/plugins/webuploader/webuploader.min.js"></script>
+    <script src="../static/js/common/ajax-object.js"></script>
+    <script src="../static/js/common/bootstrap-table-object.js"></script>
+    <script src="../static/js/common/tree-table-object.js"></script>
+    <script src="../static/js/common/web-upload-object.js"></script>
+    <script src="../static/js/common/ztree-object.js"></script>
+    <script src="../static/js/common/Feng.js"></script>
+
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+
+
+
+        <div id="order">
+            <div class="col-md-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tabbable tabs-left">
+                             
+                            <div class="tab-content" id="mytab">
+                                <div id="dropdown3" class="tab-pane active">
+                                    <form class="form" role="form" method="post" enctype="multipart/form-data" onsubmit="return false;">
+                                        <h2>车辆情况调查信息</h2>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>抵押人</label>
+                                                    <input type="text" class="form-control" id="ownername" name="ownername" placeholder="请输入抵押人" required disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>抵押人证件类型</label>
+                                                    <select class="form-control" id="guarantycerttype" name="guarantycerttype" required disabled>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>抵押人证件号码</label>
+                                                    <input type="text" class="form-control" id="guarantycertid" name="guarantycertid" placeholder="请输入抵押人证件号码" required disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>抵押人联系电话</label>
+                                                    <input type="text" class="form-control" id="guarantyphone" name="guarantyphone" pattern="^1((3|7|5|8){1}\d{1}|70)\d{8}$" placeholder="请输入抵押人联系电话" required
+                                                        disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车型名称</label>
+                                                    <input type="text" class="form-control" id="modelname" name="modelname" placeholder="请输入车型名称" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>出厂年月</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="makedate" name="makedate" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入出厂年月" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车牌号</label>
+                                                    <input type="text" class="form-control" id="car_number" name="car_number" placeholder="请输入车牌号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车架号</label>
+                                                    <input type="text" class="form-control" id="vin" name="vin" placeholder="请输入车架号" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>发动机号</label>
+                                                    <input type="text" class="form-control" id="engine_no" name="engine_no" placeholder="请输入发动机号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>机动车辆登记证号</label>
+                                                    <input type="text" class="form-control" id="engine" name="engine" placeholder="请输入机动车辆登记证号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>初次上牌年月</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="regdate" name="regdate" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入初次上牌年月" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>行驶证号</label>
+                                                    <input type="text" class="form-control" id="drivelicense" name="drivelicense" placeholder="请输入行驶证号" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>行驶证有效期</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="drivevalidity" name="drivevalidity" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入行驶证有效期" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车龄</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="carage" name="carage" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入车龄" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>里程数</label>
+                                                    <input type="text" class="form-control" id="mileage" name="mileage" placeholder="请输入里程数" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车辆状态（套牌，逃逸等）</label>
+                                                    <input type="text" class="form-control" id="car_status" name="car_status" placeholder="请输入车辆状态" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车辆类型：是否营转非</label>
+                                                    <select class="form-control" id="model" name="model" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="1">1:营转非 </option>
+                                                        <option value="2">2:非营运</option>
+                                                        <option value="3">3:租 </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>是否为事故车类型</label>
+                                                    <select class="form-control" id="accidenttype" name="accidenttype" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>排量，单位升</label>
+                                                    <input type="text" class="form-control" id="liter" name="liter" placeholder="请输入排量">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>是否有涡轮增压</label>
+                                                    <select class="form-control" id="literturbo" name="literturbo">
+                                                        <option value="">请选择</option>
+                                                        <option value="1">有</option>
+                                                        <option value="0">无</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>马力</label>
+                                                    <input type="text" class="form-control" id="power" name="power" placeholder="请输入马力">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车身颜色</label>
+                                                    <input type="text" class="form-control" id="color" name="color" placeholder="请输入车身颜色">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>照片备注</label>
+                                                    <input type="text" class="form-control" id="photocomments" name="photocomments" placeholder="请输入照片备注">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车辆归属地</label>
+                                                    <input type="text" class="form-control" id="caraddress" name="caraddress" placeholder="请输入车辆归属地" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>过户次数</label>
+                                                    <input type="text" class="form-control" id="transfertimes" name="transfertimes" placeholder="请输入过户次数" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车辆年检到期日</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="inspectMatureDate1" name="inspectMatureDate1" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入车辆年检到期日" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车辆年检有效期</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="CarValidTerm1" name="CarValidTerm1" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入车辆年检有效期" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>新车指导价，单位万元</label>
+                                                    <input type="text" class="form-control" id="modelprice" name="modelprice" placeholder="请输入新车指导价" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>现售价格</label>
+                                                    <input type="number" class="form-control" id="sellprice" name="sellprice" min="0" pattern="^\+?[1-9][0-9]*$" placeholder="请输入现售价格" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>抵押物评估币种</label>
+                                                    <input type="text" class="form-control" id="evalcurrency" name="evalcurrency" value="人民币" placeholder="请输入抵押物评估币种" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>初次评估时间</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="firstevaldate" name="firstevaldate" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入初次评估时间" required disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>初次评估价值</label>
+                                                    <input type="text" class="form-control" id="firstevalnetvalue" name="firstevalnetvalue" placeholder="请输入初次评估价值" required disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>初次评估价值单位</label>
+                                                    <input type="text" class="form-control" id="firstevalconfirmunit" name="firstevalconfirmunit" value="万元" placeholder="请输入初次评估价值单位" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>初次评估机构</label>
+                                                    <input type="text" class="form-control" id="firstevalorgnam" name="firstevalorgnam" value="车300" placeholder="请输入初次评估机构" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>定价订单号</label>
+                                                    <input type="text" class="form-control" id="orderno" name="orderno" placeholder="请输入定价订单号">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>定价订单上传时间</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="orderinputtime" name="orderinputtime" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入定价订单上传时间">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>定价完成时间</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="orderfinishtime" name="orderfinishtime" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入定价完成时间">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>上传定价订单用户手机号</label>
+                                                    <input type="number" class="form-control" id="ordersubmituser" name="ordersubmituser" pattern="^1((3|7|5|8){1}\d{1}|70)\d{8}$" placeholder="请输入上传定价订单用户手机号">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>在线报告的URL</label>
+                                                    <input type="text" class="form-control" id="reporturl" name="reporturl" pattern="[a-zA-z]+://[^\s]*" placeholder="请输入在线报告的URL">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>报告的链接</label>
+                                                    <input type="text" class="form-control" id="pdfurl" name="pdfurl" pattern="[a-zA-z]+://[^\s]*" placeholder="请输入报告的链接">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>定价视频下载地址</label>
+                                                    <input type="text" class="form-control" id="video" name="video" pattern="[a-zA-z]+://[^\s]*" placeholder="请输入定价视频下载地址">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>来源</label>
+                                                    <input type="text" class="form-control" id="source" name="source" value="车300" placeholder="请输入来源">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>评估认定价值</label>
+                                                    <input type="number" class="form-control" id="confirmvalue" name="confirmvalue" min="0" pattern="^\+?[1-9][0-9]*$" placeholder="请输入评估认定价值" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>评估认定价值单位</label>
+                                                    <input type="text" class="form-control" id="evalconfirmunit" name="evalconfirmunit" value="万元" placeholder="请输入评估认定价值单位" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>评估定价机构</label>
+                                                    <input type="text" class="form-control" id="evalorgname" name="evalorgname" value="上海春律" placeholder="请输入评估定价机构" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>评估定价评估员</label>
+                                                    <input type="text" class="form-control" id="evalusername" name="evalusername" placeholder="请输入评估定价评估员" required disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2>车辆保险情况调查</h2>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险险种是否齐全</label>
+                                                    <select class="form-control" id="isInsuranceType" name="isInsuranceType" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">交抢</option>
+                                                        <option value="">商业</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label> 保险单编号（商业险）</label>
+                                                    <input type="text" class="form-control" id="InsuranceNo1" name="InsuranceNo1" placeholder="请输入保险单编号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单到期日（商业险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceTerm1" name="InsuranceTerm1" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险单到期日" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险有效期（商业险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceValidityTerm1" name="InsuranceValidityTerm1" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险有效期" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单编号（交抢险）</label>
+                                                    <input type="text" class="form-control" id="InsuranceNo2" name="InsuranceNo2" placeholder="请输入保险单编号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label> 保险单到期日（交抢险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceTerm2" name="InsuranceTerm2" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险单到期日" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险有效期（交抢险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceValidityTerm2" name="InsuranceValidityTerm2" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险有效期" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label> 保险单批单编号（商业险）</label>
+                                                    <input type="text" class="form-control" id="InsuranceBatchNo1" name="InsuranceBatchNo1" placeholder="请输入保险单批单编号" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单批单编号（交抢险）</label>
+                                                    <input type="text" class="form-control" id="InsuranceBatchNo2" name="InsuranceBatchNo2" placeholder="请输入保险单批单编号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label> 照片上否是传</label>
+                                                    <select class="form-control" id="IsUploadPhoto1" name="IsUploadPhoto1" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2>车辆车辆钥匙情况</h2>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车辆钥匙编号</label>
+                                                    <input type="text" class="form-control" id="vehicleKeyNo" name="vehicleKeyNo" placeholder="请输入车辆钥匙编号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>交付日期</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="DeliveryDate" name="DeliveryDate" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入交付日期" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>照片上否是传</label>
+                                                    <select class="form-control" id="isUploadPhoto2" name="isUploadPhoto2" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2>车辆续保情况调查</h2>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险险种是否齐全</label>
+                                                    <select class="form-control" id="isVehicleType2" name="isVehicleType2" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">交抢</option>
+                                                        <option value="">商业</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单编号（商业险）</label>
+                                                    <input type="text" class="form-control" id="InsuranceNo3" name="InsuranceNo3" placeholder="请输入车保险单编号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单起始期日（商业险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceBeginDate3" name="InsuranceBeginDate3" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险单起始期日" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label> 保险单到期日（商业险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceEndDa" name="InsuranceEndDa" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险单到期日" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险有效期（商业险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceValidTerm3" name="InsuranceValidTerm3" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险有效期" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单编号（交抢险）</label>
+                                                    <input type="text" class="form-control" id="InsuranceNo4" name="InsuranceNo4" placeholder="请输入车保险单编号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单起始期日（交抢险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceBeginDate4" name="InsuranceBeginDate4" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险单起始期日">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单到期日（交抢险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceEndDate4" name="InsuranceEndDate4" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险单到期日" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label> 保险有效期（交抢险）</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="InsuranceValidTerm4" name="InsuranceValidTerm4" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入保险有效期" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单批单编号（商业险）</label>
+                                                    <input type="text" class="form-control" id="InsuranceBatchNo3" name="InsuranceBatchNo3" placeholder="请输入保险单批单编号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>保险单批单编号（交抢险）</label>
+                                                    <input type="text" class="form-control" id="InsuranceBatchNo4" name="InsuranceBatchNo4" placeholder="请输入保险单批单编号" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label> 照片上否上传</label>
+                                                    <select class="form-control" id="isUploadPhoto3" name="isUploadPhoto3" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2>车辆年检续检情况调查</h2>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车辆年检到期日</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="inspectMatureDate2" name="inspectMatureDate2" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入车辆年检到期日" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>车辆年检有效期</label>
+                                                    <input type="text" class="form-control layer-date laydate-icon" id="CarValidTerm2" name="CarValidTerm2" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"
+                                                        placeholder="请输入车车辆年检有效期" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label> 照片上否上传</label>
+                                                    <select class="form-control" id="vehicleCheckUpload" name="vehicleCheckUpload" required>
+                                                        <option value="">请选择</option>
+                                                        <option value="">是</option>
+                                                        <option value="">否</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-sm btn-primary icon-check">提交</button>
+                                                <button type="button" class="btn btn-sm btn-danger  icon-reply">取消</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PAGE CONTENT ENDS -->
+            </div>
+        </div>
+
+       
+        <script>
+           
+                  setTimeout(function(){
+		 $('input[type=text]').val(Math.random().toString(36).slice(2,8))
+		 $('.layer-date').val('2017-07-07')
+		 //$('input[type=number]').val(Math.floor(Math.random()*5))
+		 $('input[type=number]').val(5)
+		 $('textarea').val(18516528222)
+		 $('select').find('option:last').prop('selected',true)
+		 $('input[type=radio]').prop('checked',true)
+		 },1000)
+
+            // 进行对象序列化
+            jQuery.prototype.serializeObject=function(){  
+                var a,o,h,i,e;  
+                a=this.serializeArray();  
+                o={};  
+                h=o.hasOwnProperty;  
+                for(i=0;i<a.length;i++){  
+                    e=a[i];  
+                    if(!h.call(o,e.name)){  
+                        o[e.name]=e.value;  
+                    }  
+                }  
+                return o;  
+            };
+    
+      
+        //押品调查信息     
+        $('#dropdown3 [type=submit]').click(function () {
+            var tab = $(this).parents('form') 
+            $(tab).off('submit').on('submit', function (e) {
+                var json = $(this).serializeObject()
+                    // json['id'] = location.search.substr(4)
+                    // console.log(JSON.stringify(json, null, 4)) 
+                    
+                    json['odrderID']=$('#order').val()
+                    
+                     $('input,select').each(function(i,v){
+				            if ($(this).prop('disabled') ==  true){
+				                if (  $(this).is('input') ){
+				                 json[$(this).attr('name')]=$(this).val()  
+				                }
+				                else if (  $(this).is('select') ){
+				                json[$(this).attr('name')]=$(this).find(':selected').val()                    
+				                }
+				            }
+				        })       
+                    
+                      console.log(JSON.stringify(json, null, 4)) 
+                    
+                $.ajax({
+                    type: 'post',
+                    url: '/examine/refuse',
+                    cache: false,
+                    async: false,
+                    data:{input:JSON.stringify(json)},
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.code == 200) {
+                            layer.msg('提交成功') 
+                        }
+                        else if (data.code == 202) {
+                            layer.msg('不能重复提交');
+                        }
+                    },
+                    error: function (data) {
+                        layer.msg('提交失败，请重试');    
+                    },
+                })
+            })
+        })        
+
+
+        </script>
+    </div>
+</body>
+
+</html>

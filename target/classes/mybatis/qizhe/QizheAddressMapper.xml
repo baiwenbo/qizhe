@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="QizheAddressMapper" >
+
+
+
+  <select id="saddress" parameterType="pd" resultType="pd" >
+    select 
+    id, qgongsi, bumen, qbianhao, qname, qnamehao, address, a01sm, a02sm, a03sm, a04sm,
+    a05sm, a06sm, a07sm, a08sm, a09sm, a10sm
+    from qizhe_address
+    where qname = #{qname}
+  </select>
+
+  <select id="query"  parameterType="pd" resultType="pd" >
+    select
+    id, qgongsi, bumen, qbianhao, qname, qnamehao, address, a01sm, a02sm, a03sm, a04sm,
+    a05sm, a06sm, a07sm, a08sm, a09sm, a10sm
+    from qizhe_address
+  </select>
+</mapper>

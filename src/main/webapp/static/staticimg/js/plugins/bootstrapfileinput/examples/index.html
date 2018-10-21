@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- release v4.4.3, copyright 2014 - 2017 Kartik Visweswaran -->
+<!--suppress JSUnresolvedLibraryURL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Krajee JQuery Plugins - &copy; Kartik</title>
+    <link href="../css/bootstrap.min.css" media="all" rel="stylesheet">
+    <link href="../css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="../themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="../js/jquery214.min.js"></script>
+    <script src="../js/plugins/sortable.js" type="text/javascript"></script>
+    <script src="../js/fileinput.js" type="text/javascript"></script>
+    <script src="../js/locales/fr.js" type="text/javascript"></script>
+    <script src="../js/locales/es.js" type="text/javascript"></script>
+    <script src="../themes/explorer/theme.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+
+ 
+
+
+<div class="container kv-main">
+    <div class="page-header">
+        <h2>Bootstrap File Input Example
+            <small><a href="https://github.com/kartik-v/bootstrap-fileinput-samples"><i
+                    class="glyphicon glyphicon-download"></i> Download Sample Files</a></small>
+        </h2>
+    </div>
+    <form enctype="multipart/form-data">
+        <label for="file1">Test invalid input type</label>
+        <input id="upload1" name="file1"  class="file" type="file" multiple >
+    </form>
+    <br>
+    <hr>
+    <form enctype="multipart/form-data">
+        <label for="file1">Test invalid input type</label>
+        <input id="upload21" name="file1"  class="file" type="file" multiple >
+    </form>
+    <br>
+    <hr>    
+    <form enctype="multipart/form-data">
+        <label for="file2">Test invalid input type</label>
+        <input id="upload4" name="file2" class="file" type="file" multiple >
+    </form> 
+</div>
+
+
+
+</body>
+<script>
+	//客户照片
+	var upload1=[]
+    $('#upload1').fileinput({
+        theme: "explorer",
+        language: 'zh', //设置语言
+        uploadUrl: '<%=basePath%>pictures/save?imgurl=customerPictureUrl', //上传的地址
+        allowedFileExtensions: ['jpg','jpeg', 'gif', 'png'],//接收的文件后缀
+        showUpload: true, //是否显示上传按钮
+        showCaption: true,//是否显示标题
+        browseClass: "btn btn-primary", //按钮样式
+        maxFileSize: 5000,//单位为kb，如果为0表示不限制文件大小
+        maxFileCount: 10, //表示允许同时上传的最大文件个数
+        validateInitialCount:true,
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        overwriteInitial: false,
+            initialPreviewAsData: true,
+            initialPreview: [
+            "https://www.baidu.com/img/bd_logo1.png",
+            "https://www.baidu.com/img/bd_logo1.png",
+            ],
+            initialPreviewConfig: [
+                {caption: "nature-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1},
+                {caption: "nature-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1},
+            ]         
+    })
+    // .on("filebatchselected", function(event, files) {
+    //     $(this).fileinput("upload");
+    // })
+    .on("fileuploaded", function (event, data, previewId, index) {
+			var json= data.response
+			JSON.stringify(json)
+			upload1.push(json.url)
+			localStorage.setItem('customerPictureUrl', upload1)
+	});
+
+
+	var upload21=[]
+    $('#upload21').fileinput({
+        theme: "explorer",
+        language: 'zh', //设置语言
+        uploadUrl: '<%=basePath%>pictures/save?imgurl=vehiclePictureUrl', //上传的地址
+        allowedFileExtensions: ['jpg','jpeg', 'gif', 'png'],//接收的文件后缀
+        showUpload: true, //是否显示上传按钮
+        showCaption: true,//是否显示标题
+        browseClass: "btn btn-primary", //按钮样式
+        maxFileSize: 5000,//单位为kb，如果为0表示不限制文件大小
+        maxFileCount: 10, //表示允许同时上传的最大文件个数
+        validateInitialCount:true,
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+		overwriteInitial: false,
+    }).on("fileuploaded", function (event, data, previewId, index) {
+			var json= data.response
+			JSON.stringify(json)
+			upload21.push(json.url)
+			localStorage.setItem('vehiclePictureUrl', upload21)
+	});
+
+
+
+	var upload4=[]
+    $('#upload4').fileinput({
+        language: 'zh', //设置语言
+        uploadUrl: '<%=basePath%>pictures/save?imgurl=contractPictureUrl', //上传的地址
+        allowedFileExtensions: ['jpg','jpeg', 'gif', 'png','pdf'],//接收的文件后缀
+        showUpload: true, //是否显示上传按钮
+        showCaption: true,//是否显示标题
+        browseClass: "btn btn-primary", //按钮样式
+        maxFileSize: 5000,//单位为kb，如果为0表示不限制文件大小
+        maxFileCount: 10, //表示允许同时上传的最大文件个数
+        validateInitialCount:true,
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        overwriteInitial: false,
+        initialPreviewAsData: true,
+        initialPreview: [
+        "https://www.baidu.com/img/bd_logo1.png",
+        ],
+        initialPreviewConfig: [
+            {caption: "nature-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1},
+        ]        
+    }).on("fileuploaded", function (event, data, previewId, index) {
+			var json= data.response
+			JSON.stringify(json)
+			upload4.push(json.url)
+			localStorage.setItem('contractPictureUrl', upload4)
+	}); 
+
+
+
+
+
+</script>
+</html>

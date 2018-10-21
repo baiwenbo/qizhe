@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReplyMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into cbw_reply(
+			CONTENT,	
+			ISSUEID,	
+			USERID,	
+			ISDELETED,	
+			CREATE_TIME,	
+			UPDATE_TIME
+		) values (
+			#{CONTENT},	
+			#{ISSUEID},	
+			#{USERID},	
+			#{ISDELETED},	
+			#{CREATE_TIME},	
+			#{UPDATE_TIME}
+		)
+	</insert>
+	
+	<!-- H5新增问题回复-->
+	<insert id="addReply" parameterType="pd">
+		insert into cbw_reply(
+			content,	
+			issueId,	
+			userId,	
+			isDeleted,	
+			create_time,	
+			update_time
+		) values (
+			#{content},	
+			#{issueId},	
+			1,	
+			0,	
+			now(),	
+			now()
+		)
+	</insert>
+	
+		<!-- 新增问题 -->
+	<insert id="saveU" parameterType="pd" flushCache="false">
+		insert into cbw_reply(
+			CONTENT,	
+			ISSUEID,	
+			USERID,	
+			ISDELETED,	
+			CREATE_TIME,	
+			UPDATE_TIME
+		) values (
+			#{CONTENT},	
+			#{ISSUEID},	
+			#{USERID},	
+			#{ISDELETED},	
+			#{CREATE_TIME},	
+			#{UPDATE_TIME}
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from cbw_reply
+		where 
+			ID = #{ID}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  cbw_reply
+			set 
+				CONTENT = #{CONTENT},
+				ISSUEID = #{ISSUEID},
+				USERID = #{USERID},
+				ISDELETED = #{ISDELETED},
+				CREATE_TIME = #{CREATE_TIME},
+				UPDATE_TIME = #{UPDATE_TIME},
+			ID = ID
+			where 
+				ID = #{ID}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			CONTENT,	
+			ISSUEID,	
+			USERID,	
+			ISDELETED,	
+			CREATE_TIME,	
+			UPDATE_TIME,	
+			ID
+		from 
+			cbw_reply
+		where 
+			ID = #{ID}
+	</select>
+	
+	<!-- 获取当前问题回复列表 -->
+	<select id="findByReplyList" parameterType="pd" resultType="pd">
+		select 
+			r.content,		
+			u.avatar,
+			u.name,
+			r.id
+		from 
+			cbw_reply r
+		LEFT JOIN cbw_user u on u.id = r.userId
+		where 
+			issueId = #{id}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.CONTENT,	
+				a.ISSUEID,	
+				a.USERID,	
+				a.ISDELETED,	
+				a.CREATE_TIME,	
+				a.UPDATE_TIME,	
+				a.ID
+		from 
+				cbw_reply a
+		where 1 = 1
+		<if test="pd.KEYW != null and pd.KEYW != ''"><!-- 关键词检索 -->
+			and
+				(
+					 a.CONTENT LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+					 or 
+					 a.ISSUEID LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%') 
+					 or
+					 a.USERID LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+					 or
+					 a.ISDELETED LIKE CONCAT(CONCAT('%', #{pd.KEYW}),'%')
+				)
+		</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.CONTENT,	
+				a.ISSUEID,	
+				a.USERID,	
+				a.ISDELETED,	
+				a.CREATE_TIME,	
+				a.UPDATE_TIME,	
+				a.ID
+		from 
+				cbw_reply a
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from cbw_reply
+		where 
+			ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>

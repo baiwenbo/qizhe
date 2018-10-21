@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit" />
+    <!-- 让360浏览器默认选择webkit内核 -->
+
+    <!-- 全局css -->
+    <link rel="shortcut icon" href="static/favicon.ico">
+    <link href="../static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../static/css/plugins/validate/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="../static/css/animate.css" rel="stylesheet">
+    <link href="../static/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../static/css/_fstyle.css" rel="stylesheet">
+    <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../static/css/plugins/webuploader/webuploader.css" rel="stylesheet">
+    <link href="../static/css/plugins/ztree/zTreeStyle.css" rel="stylesheet">
+    <link href="../static/css/plugins/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet" />
+    <!-- <link href="static/css/plugins/ztree/demo.css" rel="stylesheet"> -->
+
+    <!-- 全局js -->
+    <script src="../static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="../static/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="../static/js/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../static/js/plugins/validate/bootstrapValidator.min.js"></script>
+    <script src="../static/js/plugins/validate/zh_CN.js"></script>
+    <script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../static/js/plugins/jquery-treegrid/js/jquery.treegrid.min.js"></script>
+    <script src="../static/js/plugins/jquery-treegrid/js/jquery.treegrid.bootstrap3.js"></script>
+    <script src="../static/js/plugins/jquery-treegrid/extension/jquery.treegrid.extension.js"></script>
+    <script src="../static/js/plugins/layer/layer.min.js"></script>
+    <script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="../static/js/plugins/webuploader/webuploader.min.js"></script>
+    <script src="../static/js/common/ajax-object.js"></script>
+    <script src="../static/js/common/bootstrap-table-object.js"></script>
+    <script src="../static/js/common/tree-table-object.js"></script>
+    <script src="../static/js/common/web-upload-object.js"></script>
+    <script src="../static/js/common/ztree-object.js"></script>
+    <script src="../static/js/common/Feng.js"></script>
+
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+
+
+
+        <div id="order">
+            <div class="col-md-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tabbable tabs-left">
+                           
+                            <div class="tab-content" id="mytab">
+                              
+                                <div id="dropdown5" class="tab-pane active">
+                                    <form class="form" role="form" method="post" enctype="multipart/form-data" onsubmit="return false;">
+                                        <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>合同编号</label>
+                                                        <input type="text" class="form-control" id="contractid" name="contractid" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>客户姓名</label>
+                                                        <input type="text" class="form-control" id="custname" name="custname" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>证件类型</label>
+                                                        <input type="text" class="form-control" id="certtype" name="certtype" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>证件号码</label>
+                                                        <input type="text" class="form-control" id="certid" name="certid" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>联系电话</label>
+                                                        <input type="text" class="form-control" id="phoneno" name="phoneno" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>贷款金额</label>
+                                                        <input type="text" class="form-control" id="businesssum" name="businesssum" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>贷款期限</label>
+                                                        <input type="text" class="form-control" id="loanterm" name="loanterm" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>贷款期限单位</label>
+                                                        <input type="text" class="form-control" id="loanterm" name="loanterm" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>贷款用途描述</label>
+                                                        <input type="text" class="form-control" id="loanpurposedesc" name="loanpurposedesc" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>贷款利率</label>
+                                                        <input type="text" class="form-control" id="rate" name="rate" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>是否受托支付</label>
+                                                        <input type="text" class="form-control" id="ifentrustpay" name="ifentrustpay" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>放款账号</label>
+                                                        <input type="text" class="form-control" id="accountno" name="accountno" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>放款账户名</label>
+                                                        <input type="text" class="form-control" id="accountname" name="accountname" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>放款账户开户行</label>
+                                                        <input type="text" class="form-control" id="bankid" name="bankid" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>还款方式</label>
+                                                        <input type="text" class="form-control" id="repaymethod" name="repaymethod" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>认定价值大写</label>
+                                                        <input type="text" class="form-control" id="" name="" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>                                      
+                                        <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>认定价值小写</label>
+                                                        <input type="text" class="form-control" id="" name="" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>产权人姓名</label>
+                                                        <input type="text" class="form-control" id="" name="" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>机动车登记证编号</label>
+                                                        <input type="text" class="form-control" id="" name="" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>保险单号码</label>
+                                                        <input type="text" class="form-control" id="" name="" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>                                        
+                                        <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>保险单起止时间</label>
+                                                        <input type="text" class="form-control" id="" name="" disabled>
+                                                    </div>
+                                                </div>
+                                        </div>                                        
+                                        <br>
+                                        <br>
+                                        <div class="row hide">
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-sm btn-primary icon-check">提交</button>
+                                                <button type="button" class="btn btn-sm btn-danger  icon-reply">取消</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                             
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PAGE CONTENT ENDS -->
+            </div>
+        </div>
+ 
+    </div>
+</body>
+
+</html>

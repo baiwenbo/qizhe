@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserInfoMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into user(
+			ACTIVE_TYPE,	
+			CLIENT_NAME,	
+			CLIENT_MOBILEPHONE,	
+			CLIENT_SEX,	
+			CLIENT_IDENTITY_CARD,	
+			CLIENT_POSITION,	
+			CLIENT_TO_LOAN_AMOUNT,	
+			CLIENT_ADDRESS_TOTAL,	
+			CLIENT_ADDRESS_PROVINCE,	
+			CLIENT_ADDRESS_CITY,	
+			CLIENT_ADDRESS_COUNTRY,	
+			APPOINTED_DATE,	
+			SOURCE,	
+			CLIENT_FROM,	
+			CLIENT_IP,	
+			CLIENT_USER_AGENT,	
+			CLIENT_USER_HOST,	
+			REMARK,	
+			CREATE_DATE,	
+			UPDATE_DATE,	
+			ID
+		) values (
+			#{ACTIVE_TYPE},	
+			#{CLIENT_NAME},	
+			#{CLIENT_MOBILEPHONE},	
+			#{CLIENT_SEX},	
+			#{CLIENT_IDENTITY_CARD},	
+			#{CLIENT_POSITION},	
+			#{CLIENT_TO_LOAN_AMOUNT},	
+			#{CLIENT_ADDRESS_TOTAL},	
+			#{CLIENT_ADDRESS_PROVINCE},	
+			#{CLIENT_ADDRESS_CITY},	
+			#{CLIENT_ADDRESS_COUNTRY},	
+			#{APPOINTED_DATE},	
+			#{SOURCE},	
+			#{CLIENT_FROM},	
+			#{CLIENT_IP},	
+			#{CLIENT_USER_AGENT},	
+			#{CLIENT_USER_HOST},	
+			#{REMARK},	
+			#{CREATE_DATE},	
+			#{UPDATE_DATE},	
+			#{ID}
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from user
+		where 
+			ID = #{ID}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  user
+			set 
+				ACTIVE_TYPE = #{ACTIVE_TYPE},
+				CLIENT_NAME = #{CLIENT_NAME},
+				CLIENT_MOBILEPHONE = #{CLIENT_MOBILEPHONE},
+				CLIENT_SEX = #{CLIENT_SEX},
+				CLIENT_IDENTITY_CARD = #{CLIENT_IDENTITY_CARD},
+				CLIENT_POSITION = #{CLIENT_POSITION},
+				CLIENT_TO_LOAN_AMOUNT = #{CLIENT_TO_LOAN_AMOUNT},
+				CLIENT_ADDRESS_TOTAL = #{CLIENT_ADDRESS_TOTAL},
+				CLIENT_ADDRESS_PROVINCE = #{CLIENT_ADDRESS_PROVINCE},
+				CLIENT_ADDRESS_CITY = #{CLIENT_ADDRESS_CITY},
+				CLIENT_ADDRESS_COUNTRY = #{CLIENT_ADDRESS_COUNTRY},
+				APPOINTED_DATE = #{APPOINTED_DATE},
+				SOURCE = #{SOURCE},
+				CLIENT_FROM = #{CLIENT_FROM},
+				CLIENT_IP = #{CLIENT_IP},
+				CLIENT_USER_AGENT = #{CLIENT_USER_AGENT},
+				CLIENT_USER_HOST = #{CLIENT_USER_HOST},
+				REMARK = #{REMARK},
+				CREATE_DATE = #{CREATE_DATE},
+				UPDATE_DATE = #{UPDATE_DATE},
+			ID = ID
+			where 
+				ID = #{ID}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			ACTIVE_TYPE,	
+			CLIENT_NAME,	
+			CLIENT_MOBILEPHONE,	
+			CLIENT_SEX,	
+			CLIENT_IDENTITY_CARD,	
+			CLIENT_POSITION,	
+			CLIENT_TO_LOAN_AMOUNT,	
+			CLIENT_ADDRESS_TOTAL,	
+			CLIENT_ADDRESS_PROVINCE,	
+			CLIENT_ADDRESS_CITY,	
+			CLIENT_ADDRESS_COUNTRY,	
+			APPOINTED_DATE,	
+			SOURCE,	
+			CLIENT_FROM,	
+			CLIENT_IP,	
+			CLIENT_USER_AGENT,	
+			CLIENT_USER_HOST,	
+			REMARK,	
+			CREATE_DATE,	
+			UPDATE_DATE,	
+			ID
+		from 
+			user
+		where 
+			ID = #{ID}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.ACTIVE_TYPE,	
+				a.CLIENT_NAME,	
+				a.CLIENT_MOBILEPHONE,	
+				a.CLIENT_SEX,	
+				a.CLIENT_IDENTITY_CARD,	
+				a.CLIENT_POSITION,	
+				a.CLIENT_TO_LOAN_AMOUNT,	
+				a.CLIENT_ADDRESS_TOTAL,	
+				a.CLIENT_ADDRESS_PROVINCE,	
+				a.CLIENT_ADDRESS_CITY,	
+				a.CLIENT_ADDRESS_COUNTRY,	
+				a.APPOINTED_DATE,	
+				a.SOURCE,	
+				a.CLIENT_FROM,	
+				a.CLIENT_IP,	
+				a.CLIENT_USER_AGENT,	
+				a.CLIENT_USER_HOST,	
+				a.REMARK,	
+				a.CREATE_DATE,	
+				a.UPDATE_DATE,	
+				a.ID
+		from 
+				user a
+		where 1=1
+		 <if test="pd.name != null and pd.name != ''">
+	         and a.CLIENT_NAME = #{pd.name}
+	     </if>
+	     <if test="pd.lastLoginStart != null and pd.lastLoginStart != ''">
+	     	<if test="pd.lastLoginEnd != null and pd.lastLoginEnd != ''">
+	     	 and a.CREATE_DATE BETWEEN #{pd.lastLoginStart} and #{pd.lastLoginEnd}
+	     	</if>
+	     </if>
+	     <if test="pd.remark == '已备注'">
+	         and a.REMARK != ''
+	     </if>
+	     <if test="pd.remark == '未备注'">
+	         and a.REMARK is null
+	     </if>
+		order by a.CREATE_DATE desc
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.ACTIVE_TYPE,	
+				a.CLIENT_NAME,	
+				a.CLIENT_MOBILEPHONE,	
+				a.CLIENT_SEX,	
+				a.CLIENT_IDENTITY_CARD,	
+				a.CLIENT_POSITION,	
+				a.CLIENT_TO_LOAN_AMOUNT,	
+				a.CLIENT_ADDRESS_TOTAL,	
+				a.CLIENT_ADDRESS_PROVINCE,	
+				a.CLIENT_ADDRESS_CITY,	
+				a.CLIENT_ADDRESS_COUNTRY,	
+				a.APPOINTED_DATE,	
+				a.SOURCE,	
+				a.CLIENT_FROM,	
+				a.CLIENT_IP,	
+				a.CLIENT_USER_AGENT,	
+				a.CLIENT_USER_HOST,	
+				a.REMARK,	
+				a.CREATE_DATE,	
+				a.UPDATE_DATE,	
+				a.ID
+		from 
+				user a
+		where 1=1
+		 <if test="name != null and name != ''">
+	         and a.CLIENT_NAME = #{name}
+	     </if>
+	     <if test="lastLoginStart != null and lastLoginStart != ''">
+	     	<if test="lastLoginEnd != null and lastLoginEnd != ''">
+	     	 and a.CREATE_DATE BETWEEN #{lastLoginStart} and #{lastLoginEnd}
+	     	</if>
+	     </if>
+	     <if test="remark == '已备注'">
+	         and a.REMARK != ''
+	     </if>
+	     <if test="remark == '未备注'">
+	         and a.REMARK is null
+	     </if>
+		order by a.CREATE_DATE desc
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from user
+		where 
+			ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>
