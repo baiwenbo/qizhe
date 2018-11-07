@@ -125,6 +125,7 @@ public class AdIssueController extends BaseController {
 					audit.put("status1","待审核");
 					if(StringUtils.isNotBlank((String)pd.get("content2"))){
 						audit.put("content2",pd.get("content2"));
+						audit.put("content2img",pd.get("content2img"));
 						audit.put("status1","二次申诉待批复");
 					}
 					sele.put("beiyong3","待审核");
