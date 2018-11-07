@@ -190,7 +190,7 @@
       g11sm, g12sm, g13sm,
       g14sm, g15sm, g16sm,
       g17sm, g18sm, g19sm,
-      g20sm, h01sm, i01)
+      g20sm, h01sm, i01,dateMonth)
     values (#{id,jdbcType=INTEGER}, #{qname,jdbcType=VARCHAR}, #{bumen,jdbcType=VARCHAR},
       #{qgongsi,jdbcType=VARCHAR}, #{qbianhao,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
       #{qnamehao,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{wc,jdbcType=VARCHAR},
@@ -308,7 +308,7 @@
       #{g11sm,jdbcType=VARCHAR}, #{g12sm,jdbcType=VARCHAR}, #{g13sm,jdbcType=VARCHAR},
       #{g14sm,jdbcType=VARCHAR}, #{g15sm,jdbcType=VARCHAR}, #{g16sm,jdbcType=VARCHAR},
       #{g17sm,jdbcType=VARCHAR}, #{g18sm,jdbcType=VARCHAR}, #{g19sm,jdbcType=VARCHAR},
-      #{g20sm,jdbcType=VARCHAR}, #{h01sm,jdbcType=VARCHAR}, #{i01,jdbcType=VARCHAR})
+      #{g20sm,jdbcType=VARCHAR}, #{h01sm,jdbcType=VARCHAR}, #{i01,jdbcType=VARCHAR}, #{dateMonth})
   </insert>
 
 
